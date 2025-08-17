@@ -1,5 +1,4 @@
 id,matrix,order,conjugacy_class,tarot_id,hypercard_id
-0,"[[1,0],[0,1]]",2,1,fool,00001
-1,"[[0,-1],[1,0]]",4,2,magician,00002
-2,"[[-1,0],[0,-1]]",2,1,high_priestess,00003
-3,"[[0,1],[-1,0]]",4,2,empress,00004
+0,"[[1,0],[0,1]]",1,1,0_Fool,
+1,"[[0,-1],[1,0]]",2,21,XVI_Tower,Hyper_P00
+167,"[[6,5],[2,1]]",7,24,XVII_Star,Hyper_E44
