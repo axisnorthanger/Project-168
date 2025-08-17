@@ -1,23 +1,79 @@
-card_id,name,arcana,number,suit,element,astrological_correspondence,qabalistic_path,hebrew_letter,description
-1,The Fool,Major,0,,,Air,Aleph,Aleph,The spirit in search of experience
-2,The Magician,Major,1,,,Mercury,Beth,Beth,Conscious will and skill
-3,The High Priestess,Major,2,,,Moon,Gimel,Gimel,Intuitive wisdom and the unconscious
-4,The Empress,Major,3,,,Venus,Daleth,Daleth,Fertility and abundance
-5,The Emperor,Major,4,,,Aries,Heh,Heh,Authority and structure
-6,The Hierophant,Major,5,,,Taurus,Vav,Vav,Spiritual teaching and tradition
-7,The Lovers,Major,6,,,Gemini,Zayin,Zayin,Choice and relationships
-8,The Chariot,Major,7,,,Cancer,Cheth,Cheth,Victory through will
-9,Strength,Major,8,,,Leo,Teth,Teth,Inner strength and courage
-10,The Hermit,Major,9,,,Virgo,Yod,Yod,Soul searching and inner guidance
-11,Wheel of Fortune,Major,10,,,Jupiter,Kaph,Kaph,Cycles and destiny
-12,Justice,Major,11,,,Libra,Lamed,Lamed,Balance and karma
-13,The Hanged Man,Major,12,,,Water,Mem,Mem,Sacrifice and new perspective
-14,Death,Major,13,,,Scorpio,Nun,Nun,Transformation and rebirth
-15,Temperance,Major,14,,,Sagittarius,Samekh,Samekh,Balance and moderation
-16,The Devil,Major,15,,,Capricorn,Ayin,Ayin,Bondage and materialism
-17,The Tower,Major,16,,,Mars,Peh,Peh,Sudden change and revelation
-18,The Star,Major,17,,,Aquarius,Tzaddi,Tzaddi,Hope and inspiration
-19,The Moon,Major,18,,,Pisces,Qoph,Qoph,Illusion and the unconscious
-20,The Sun,Major,19,,,Sun,Resh,Resh,Joy and enlightenment
-21,Judgement,Major,20,,,Fire,Shin,Shin,Rebirth and inner calling
-22,The World,Major,21,,,Saturn,Tav,Tav,Completion and cosmic consciousness
+id,name,arcana,psl_order,matrix_id,emoji,is_exception
+0,0_Fool,major,1,0,🃏,True
+1,I_Magician,major,3,2,✨,True
+2,II_Priestess,major,4,5,🌙,True
+3,III_Empress,major,5,8,👑,False
+4,IV_Emperor,major,6,11,⚔️,False
+5,V_Hierophant,major,7,14,📿,False
+6,VI_Lovers,major,8,17,💕,False
+7,VII_Chariot,major,9,20,🏇,False
+8,VIII_Strength,major,10,23,🦁,False
+9,IX_Hermit,major,11,26,🔦,False
+10,X_Wheel,major,12,29,🎡,False
+11,XI_Justice,major,13,32,⚖️,False
+12,XII_Hanged,major,14,35,🙃,False
+13,XIII_Death,major,15,38,💀,False
+14,XIV_Temperance,major,16,41,🍷,False
+15,XVI_Tower,major,2,1,⚡,True
+16,XV_Devil,major,17,44,😈,False
+17,XVII_Star,major,18,47,⭐,False
+18,XVIII_Moon,major,19,50,🌕,False
+19,XIX_Sun,major,20,53,☀️,False
+20,XX_Judgement,major,21,56,📯,False
+21,XXI_World,major,22,59,🌍,False
+22,Ace_Wands,minor,23,62,🔥,False
+23,II_Wands,minor,24,65,🌟,False
+24,III_Wands,minor,25,68,🚢,False
+25,IV_Wands,minor,26,71,🏡,False
+26,V_Wands,minor,27,74,⚔️,False
+27,VI_Wands,minor,28,77,👑,False
+28,VII_Wands,minor,29,80,🏔️,False
+29,VIII_Wands,minor,30,83,⚡,False
+30,IX_Wands,minor,31,86,🛡️,False
+31,X_Wands,minor,32,89,📦,False
+32,Page_Wands,minor,33,92,👨,False
+33,Knight_Wands,minor,34,95,🐎,False
+34,Queen_Wands,minor,35,98,👸,False
+35,King_Wands,minor,36,101,👑,False
+36,Ace_Cups,minor,37,104,🏆,False
+37,II_Cups,minor,38,107,💕,False
+38,III_Cups,minor,39,110,🍻,False
+39,IV_Cups,minor,40,113,💤,False
+40,V_Cups,minor,41,116,😢,False
+41,VI_Cups,minor,42,119,🎁,False
+42,VII_Cups,minor,43,122,☁️,False
+43,VIII_Cups,minor,44,125,🌙,False
+44,IX_Cups,minor,45,128,😊,False
+45,X_Cups,minor,46,131,🌈,False
+46,Page_Cups,minor,47,134,🐟,False
+47,Knight_Cups,minor,48,137,🏇,False
+48,Queen_Cups,minor,49,140,👸,False
+49,King_Cups,minor,50,143,👑,False
+50,Ace_Swords,minor,51,146,⚔️,False
+51,II_Swords,minor,52,149,🤐,False
+52,III_Swords,minor,53,152,💔,False
+53,IV_Swords,minor,54,155,😴,False
+54,V_Swords,minor,55,158,😏,False
+55,VI_Swords,minor,56,161,⛵,False
+56,VII_Swords,minor,57,164,🥷,False
+57,VIII_Swords,minor,58,167,🔒,False
+58,IX_Swords,minor,59,170,😰,False
+59,X_Swords,minor,60,173,😵,False
+60,Page_Swords,minor,61,176,🗡️,False
+61,Knight_Swords,minor,62,179,🏇,False
+62,Queen_Swords,minor,63,182,👸,False
+63,King_Swords,minor,64,185,👑,False
+64,Ace_Pentacles,minor,65,188,💰,False
+65,II_Pentacles,minor,66,191,🎭,False
+66,III_Pentacles,minor,67,194,🏛️,False
+67,IV_Pentacles,minor,68,197,💸,False
+68,V_Pentacles,minor,69,200,⛪,False
+69,VI_Pentacles,minor,70,203,⚖️,False
+70,VII_Pentacles,minor,71,206,🌱,False
+71,VIII_Pentacles,minor,72,209,🔨,False
+72,IX_Pentacles,minor,73,212,🍇,False
+73,X_Pentacles,minor,74,215,👨‍👩‍👧‍👦,False
+74,Page_Pentacles,minor,75,218,🌟,False
+75,Knight_Pentacles,minor,76,221,🐎,False
+76,Queen_Pentacles,minor,77,224,👸,False
+77,King_Pentacles,minor,78,227,👑,False
