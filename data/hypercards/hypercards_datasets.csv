@@ -1,0 +1,7 @@
+dataset_id,name,description,source,type,created_date,last_modified
+HYP_001,Hypercard_Stacks,Interactive hypertext card structures,HyperCard_Archive,Interactive,2025-08-17,2025-08-17
+HYP_002,Card_Relationships,Link patterns between hypercard elements,Navigation_Analysis,Relational,2025-08-17,2025-08-17
+HYP_003,Media_Embeddings,Multimedia content embedded in cards,Media_Library,Multimedia,2025-08-17,2025-08-17
+HYP_004,Script_Behaviors,HyperTalk and behavioral scripts catalog,Script_Repository,Behavioral,2025-08-17,2025-08-17
+HYP_005,Button_Actions,Interactive button and control mappings,Interface_Design,Control,2025-08-17,2025-08-17
+HYP_006,Stack_Hierarchies,Structural organization of card stacks,Architecture_Analysis,Structural,2025-08-17,2025-08-17
