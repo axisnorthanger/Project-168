@@ -1,0 +1,10 @@
+event_id,timestamp,year,event_type,anchor_type,significance_level,computed_value,reference_frame,metadata,validation_status
+TE_1900_001,1900-01-01T00:00:00Z,1900,Temporal_Anchor,Century_Start,High,1.0000,Gregorian_Calendar,Century_transition,Validated
+TE_1920_001,1920-07-15T12:00:00Z,1920,Temporal_Anchor,Decade_Mid,Medium,0.8745,Standard_Time,Post_war_adjustment,Validated
+TE_1950_001,1950-06-21T18:30:00Z,1950,Temporal_Anchor,Solar_Maximum,High,0.9234,Universal_Time,Solar_cycle_peak,Validated
+TE_1975_001,1975-12-31T23:59:59Z,1975,Temporal_Anchor,Quarter_Century,Medium,0.7512,Coordinated_Universal,Leap_second_epoch,Validated
+TE_2000_001,2000-01-01T00:00:00Z,2000,Temporal_Anchor,Millennium_Start,Critical,1.0000,ISO_8601,Y2K_transition,Validated
+TE_2012_001,2012-12-21T11:11:00Z,2012,Temporal_Anchor,Mayan_Calendar,High,0.9876,Long_Count,Calendar_convergence,Validated
+TE_2025_001,2025-08-17T15:41:00Z,2025,Temporal_Anchor,Current_Epoch,Critical,0.9999,Present_Time,Active_computation,Validated
+TE_2037_001,2037-01-19T03:14:07Z,2037,Temporal_Anchor,Unix_Epoch_End,Critical,0.9123,POSIX_Time,32bit_rollover,Validated
+TE_2050_001,2050-12-31T23:59:59Z,2050,Temporal_Anchor,Century_Mid,High,0.8456,Future_Standard,Projection_boundary,Validated
