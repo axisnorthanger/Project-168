@@ -1,0 +1,11 @@
+matrix_id,name,dimension,type,validation_status,created_date,last_modified,source,checksum,properties
+PSL27_001,Primary_Matrix_Alpha,4x4,Orthogonal,Validated,2025-08-17,2025-08-17,PSL27_Core,a1b2c3d4,Invertible
+PSL27_002,Secondary_Matrix_Beta,3x3,Symmetric,Validated,2025-08-17,2025-08-17,PSL27_Core,e5f6g7h8,Positive_Definite
+PSL27_003,Tertiary_Matrix_Gamma,5x5,Diagonal,Validated,2025-08-17,2025-08-17,PSL27_Core,i9j0k1l2,Sparse
+PSL27_004,Quaternary_Matrix_Delta,2x2,Identity,Validated,2025-08-17,2025-08-17,PSL27_Core,m3n4o5p6,Unit
+PSL27_005,Quinary_Matrix_Epsilon,6x6,Triangular,Validated,2025-08-17,2025-08-17,PSL27_Core,q7r8s9t0,Lower_Triangular
+PSL27_006,Senary_Matrix_Zeta,4x4,Hermitian,Validated,2025-08-17,2025-08-17,PSL27_Core,u1v2w3x4,Complex_Symmetric
+PSL27_007,Septenary_Matrix_Eta,3x3,Skew_Symmetric,Validated,2025-08-17,2025-08-17,PSL27_Core,y5z6a7b8,Anti_Symmetric
+PSL27_008,Octonary_Matrix_Theta,7x7,Block_Diagonal,Validated,2025-08-17,2025-08-17,PSL27_Core,c9d0e1f2,Block_Structure
+PSL27_009,Nonary_Matrix_Iota,8x8,Circulant,Validated,2025-08-17,2025-08-17,PSL27_Core,g3h4i5j6,Circulant_Property
+PSL27_010,Denary_Matrix_Kappa,5x5,Toeplitz,Validated,2025-08-17,2025-08-17,PSL27_Core,k7l8m9n0,Constant_Diagonals
