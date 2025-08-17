@@ -1,0 +1,11 @@
+demon_id,name,rank,title,legions,office,appearance,decan,quinary,element,zodiac_sign,degree_start,degree_end,description
+1,Bael,King,First Spirit,66,Command,Three-headed (man cat toad),Aries I,1,Fire,Aries,0,10,Makes men invisible and wise
+2,Agares,Duke,Second Spirit,31,Teach Languages,Old man on crocodile,Aries I,2,Fire,Aries,0,10,Teaches languages and causes earthquakes
+3,Vassago,Prince,Third Spirit,26,Declare Past/Future,Good nature,Aries II,1,Fire,Aries,10,20,Declares things past and to come
+4,Samigina,Marquis,Fourth Spirit,30,Liberal Sciences,Small horse or ass,Aries II,2,Fire,Aries,10,20,Teaches liberal sciences
+5,Marbas,President,Fifth Spirit,36,Diseases/Healing,Great lion,Aries III,1,Fire,Aries,20,30,Answers questions of hidden things
+6,Valefor,Duke,Sixth Spirit,10,Theft,Lion with ass head,Aries III,2,Fire,Aries,20,30,Good familiar but tempts to steal
+7,Amon,Marquis,Seventh Spirit,40,Love/Friendship,Wolf with serpent tail,Taurus I,1,Earth,Taurus,30,40,Procures love and reconciles
+8,Barbatos,Duke,Eighth Spirit,30,Understanding Animals,Four kings with trumpets,Taurus I,2,Earth,Taurus,30,40,Gives understanding of animal speech
+9,Paimon,King,Ninth Spirit,200,Knowledge,Man on dromedary,Taurus II,1,Earth,Taurus,40,50,Teaches all arts and sciences
+10,Buer,President,Tenth Spirit,50,Philosophy/Logic,Centaur archer,Taurus II,2,Earth,Taurus,40,50,Teaches philosophy and logic
