@@ -1,0 +1,23 @@
+card_id,name,arcana,number,suit,element,astrological_correspondence,qabalistic_path,hebrew_letter,description
+1,The Fool,Major,0,,,Air,Aleph,Aleph,The spirit in search of experience
+2,The Magician,Major,1,,,Mercury,Beth,Beth,Conscious will and skill
+3,The High Priestess,Major,2,,,Moon,Gimel,Gimel,Intuitive wisdom and the unconscious
+4,The Empress,Major,3,,,Venus,Daleth,Daleth,Fertility and abundance
+5,The Emperor,Major,4,,,Aries,Heh,Heh,Authority and structure
+6,The Hierophant,Major,5,,,Taurus,Vav,Vav,Spiritual teaching and tradition
+7,The Lovers,Major,6,,,Gemini,Zayin,Zayin,Choice and relationships
+8,The Chariot,Major,7,,,Cancer,Cheth,Cheth,Victory through will
+9,Strength,Major,8,,,Leo,Teth,Teth,Inner strength and courage
+10,The Hermit,Major,9,,,Virgo,Yod,Yod,Soul searching and inner guidance
+11,Wheel of Fortune,Major,10,,,Jupiter,Kaph,Kaph,Cycles and destiny
+12,Justice,Major,11,,,Libra,Lamed,Lamed,Balance and karma
+13,The Hanged Man,Major,12,,,Water,Mem,Mem,Sacrifice and new perspective
+14,Death,Major,13,,,Scorpio,Nun,Nun,Transformation and rebirth
+15,Temperance,Major,14,,,Sagittarius,Samekh,Samekh,Balance and moderation
+16,The Devil,Major,15,,,Capricorn,Ayin,Ayin,Bondage and materialism
+17,The Tower,Major,16,,,Mars,Peh,Peh,Sudden change and revelation
+18,The Star,Major,17,,,Aquarius,Tzaddi,Tzaddi,Hope and inspiration
+19,The Moon,Major,18,,,Pisces,Qoph,Qoph,Illusion and the unconscious
+20,The Sun,Major,19,,,Sun,Resh,Resh,Joy and enlightenment
+21,Judgement,Major,20,,,Fire,Shin,Shin,Rebirth and inner calling
+22,The World,Major,21,,,Saturn,Tav,Tav,Completion and cosmic consciousness
