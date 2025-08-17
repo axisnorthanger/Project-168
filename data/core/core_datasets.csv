@@ -1,6 +1,0 @@
-dataset_id,name,description,source,type,created_date,last_modified
-CORE_001,Fundamental_Constants,Core mathematical and physical constants dataset,Reference_Library,Constants,2025-08-17,2025-08-17
-CORE_002,Base_Matrices,Essential matrix operations and transformations,Internal_Research,Mathematical,2025-08-17,2025-08-17
-CORE_003,Primary_Sequences,Foundational numerical sequences and patterns,Computational_Analysis,Sequential,2025-08-17,2025-08-17
-CORE_004,Control_Parameters,System control and configuration parameters,System_Config,Parameters,2025-08-17,2025-08-17
-CORE_005,Reference_Standards,Baseline measurements and standards,Calibration_Lab,Standards,2025-08-17,2025-08-17
