@@ -1,0 +1,15 @@
+entry_id,type,name,king,day,minister_number,sigil,enochian_name,office,power,element,direction,color,governing_hour,description
+1,King,Babalond,Babalond,Sunday,0,BAB,BABALOND,Solar King,Sun rulership,Fire,East,Gold,1,King of the Sun ruling Sunday
+2,Minister,Hagonel,Babalond,Sunday,1,HAG,HAGONEL,Minister of Sun,Solar power,Fire,East,Gold,1,First Minister under Babalond
+3,Minister,Ilemese,Babalond,Sunday,2,ILE,ILEMESE,Minister of Sun,Solar power,Fire,East,Gold,1,Second Minister under Babalond
+4,Minister,Ilmonda,Babalond,Sunday,3,ILM,ILMONDA,Minister of Sun,Solar power,Fire,East,Gold,1,Third Minister under Babalond
+5,Minister,Lomiol,Babalond,Sunday,4,LOM,LOMIOL,Minister of Sun,Solar power,Fire,East,Gold,1,Fourth Minister under Babalond
+6,Minister,Nalogah,Babalond,Sunday,5,NAL,NALOGAH,Minister of Sun,Solar power,Fire,East,Gold,1,Fifth Minister under Babalond
+7,Minister,Ormenel,Babalond,Sunday,6,ORM,ORMENEL,Minister of Sun,Solar power,Fire,East,Gold,1,Sixth Minister under Babalond
+8,Minister,Raliaqu,Babalond,Sunday,7,RAL,RALIAQU,Minister of Sun,Solar power,Fire,East,Gold,1,Seventh Minister under Babalond
+9,Minister,Sevanza,Babalond,Sunday,8,SEV,SEVANZA,Minister of Sun,Solar power,Fire,East,Gold,1,Eighth Minister under Babalond
+10,Minister,Solenol,Babalond,Sunday,9,SOL,SOLENOL,Minister of Sun,Solar power,Fire,East,Gold,1,Ninth Minister under Babalond
+25,King,Bornogo,Bornogo,Monday,0,BOR,BORNOGO,Lunar King,Moon rulership,Water,West,Silver,2,King of the Moon ruling Monday
+26,Minister,Bralges,Bornogo,Monday,1,BRA,BRALGES,Minister of Moon,Lunar power,Water,West,Silver,2,First Minister under Bornogo
+169,King,Baligon,Baligon,Tuesday,0,BAL,BALIGON,Martial King,Mars rulership,Fire,South,Red,3,King of Mars ruling Tuesday
+170,Minister,Abagor,Baligon,Tuesday,1,ABA,ABAGOR,Minister of Mars,Martial power,Fire,South,Red,3,First Minister under Baligon
