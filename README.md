@@ -5,6 +5,7 @@ A comprehensive reference system for PSL(2,7) group operations, temporal protoco
 ## Table of Contents
 
 - [Core Mathematics](#core-mathematics)
+- [Core Datasets](#core-datasets)
 - [Temporal Rules](#temporal-rules)
 - [Esoteric Exceptions](#esoteric-exceptions)
 - [Validation Commands](#validation-commands)
@@ -52,6 +53,12 @@ For matrices [a b; c d] in PSL(2,7):
 | B | [2 0; 0 4] | 3 | 3A |
 | AB | [2 1; 0 4] | 7 | 7B |
 | A²B | [2 2; 0 4] | 4 | 4A |
+
+## Core Datasets
+- [PSL(2,7) Matrices](https://gist.github.com/axisnorthanger/c5b9e8f9b8b64cb4bdcc4107d2c21253)
+- [Rebalanced Tarot](https://gist.github.com/axisnorthanger/7bdc8c2231cd9a26da6425a84d195992)
+- [Temporal Events](https://gist.github.com/axisnorthanger/7d6e79d419990a388a406d52bc0f0857)
+- [HyperCard Protocols](https://gist.github.com/axisnorthanger/cc86687a527552c0e0ff5bf5cc2ea5df)
 
 ## Temporal Rules
 
@@ -308,7 +315,6 @@ quarantine <element_list> [--timeout=<seconds>]
 - **E005**: Quinary split validation failed
 
 ---
-
 *Last Updated: August 17, 2025*
 *Version: 1.0.0*
 *Maintainer: Project-168 Development Team*
