@@ -1,0 +1,157 @@
+# PROJECT-168 CORE ARCHITECTURE SPECIFICATION
+# Timestamp: 2025-08-27T06:27:48-07:00
+# Objective: Regulus in Virgo Awareness & Symbolic Framework
+# File: /specs/Project-168_Core_Mechanics.yaml
+
+project_168:
+  objective: "Increase collective awareness of Regulus in Virgo archetype through symbolic interaction"
+  core_mechanism: "Baligon Protocol (Dynamic Symbol Exchange)"
+  github_root: "/project-168"
+
+  user_management:
+    types:
+      individual:
+        description: "Base user account with personal customization"
+        permissions: 
+          - change_app_color
+          - change_symbol_set (like-to-like swaps)
+          - select_verbosity_level
+        data_contribution: "Populates group_count and org_count via identification"
+        file: "/core/user_profiles.py"
+
+      group:
+        description: "Emergent entity formed by individuals self-identifying with shared purpose"
+        formation: "Organic (min 5 individuals required for recognition)"
+        visibility: "global_group_impact dashboard shows aggregate activity"
+        file: "/core/group_entities.py"
+
+      organization:
+        description: "Formal entity with administrative controls"
+        formation: "Verified registration process"
+        permissions: 
+          - custom_symbol_sets
+          - internal_group_management
+        file: "/core/organization_entities.py"
+
+    levels:
+      level_0:
+        name: "Free Tier"
+        features: 
+          - basic_symbol_access
+          - default_verbosity
+          - read_only_global_data
+        file: "/subscriptions/free_tier.py"
+
+      level_1:
+        name: "Creator Tier"
+        features:
+          - add_new_symbols
+          - modify_symbol_blocks
+          - custom_verbosity_settings
+        cost: "Modest subscription"
+        file: "/subscriptions/creator_tier.py"
+
+      level_2:
+        name: "Sovereign Tier (TBD)"
+        features: 
+          - advanced_analytics
+          - early_access_features
+          - custom_archetype_builders
+        file: "/subscriptions/sovereign_tier.py"
+
+  symbolic_framework:
+    protocol: "Baligon Protocol"
+    implementation: 
+      verbosity_levels:
+        minimal:
+          description: "User defines personal meaning for symbols"
+          output: "Symbol only (no text)"
+          file: "/symbols/verbosity_minimal.py"
+
+        default:
+          description: "System provides suggested meanings"
+          output: "Symbol + basic interpretation"
+          file: "/symbols/verbosity_default.py"
+
+        detailed:
+          description: "Comprehensive archetypal analysis"
+          output: "Symbol + extended interpretation + correspondences"
+          file: "/symbols/verbosity_detailed.py"
+
+    global_symbols:
+      source: "/data/core/psl27_matrices.csv"
+      modification:
+        process: "Any user can propose new symbols"
+        approval: "Global voting system (threshold TBD)"
+        implementation: "Added to core matrices upon approval"
+        file: "/symbols/global_symbol_manager.py"
+
+  astrological_integration:
+    birth_data:
+      input: "MM/YYYY (partial birth date)"
+      output: "zodiac_sign_symbols"
+      special_feature: "Enhanced impact when personal zodiac symbols match global symbols"
+      file: "/astrology/zodiac_integration.py"
+
+  security_architecture:
+    authentication:
+      method: "Standard email/password + OTP"
+      file: "/security/authentication.py"
+
+    privacy:
+      compliance: 
+        - "GDPR"
+        - "CCPA"
+        - "Custom ToS"
+      data_handling: "Anonymized analytics only"
+      file: "/security/privacy_policy.py"
+
+    threat_mitigation:
+      account_creation:
+        threats: "Fake user generation"
+        solutions: 
+          - "CAPTCHA implementation"
+          - "Email verification"
+          - "Rate limiting"
+        file: "/security/account_protection.py"
+
+      symbol_alteration:
+        threats: "Malicious symbol proposals"
+        solutions:
+          - "Community moderation"
+          - "Voting thresholds"
+          - "Admin oversight"
+        file: "/security/content_moderation.py"
+
+      payment_security:
+        processor: "PayPal only"
+        features:
+          - "Encrypted transactions"
+          - "No card data stored"
+          - "Subscription management"
+        file: "/payments/paypal_integration.py"
+
+  impact_measurement:
+    global_impact:
+      metric: "global_group_impact"
+      calculation: "∑(individual_activity × group_affiliation)"
+      display: "Real-time dashboard"
+      file: "/analytics/impact_calculator.py"
+
+    individual_impact:
+      metric: "personal_archetype_alignment"
+      calculation: "zodiac_symbols ∩ global_symbols"
+      file: "/analytics/personal_impact.py"
+
+  core_files:
+    main_application: "/main.py"
+    data_management: "/data/core.py"
+    symbolic_engine: "/symbols/baligon_protocol.py"
+    user_interface: "/ui/main_dashboard.py"
+
+  deployment_status:
+    current: "Individual user development only"
+    next_phase: "Group functionality implementation"
+    timeline: "TBD based on development progress"
+
+# END OF CORE MECHANICS SPECIFICATION
