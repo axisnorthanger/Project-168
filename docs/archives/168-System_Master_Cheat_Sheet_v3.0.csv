@@ -1,0 +1,42 @@
+ARCHIVED:  Mon, August 25, 2025 @ 6:05:58 AM [PDT-7]
+REFERENCE: Baligon_Protcol_Set_Aug2025.txt
+
+
+- **✅ Converted to YAML:** Now structured, parseable, and valid.
+- **✅ 168-System_Master_Cheat_Sheet_v3.0.yaml
+
+# 🌀 168-System Master Cheat Sheet (Locked)
+# Version 3.0
+
+
+## CORE MATHEMATICS
+| PSL(2,7) Property | Value | Occult Mapping |
+|-------------------|-------|----------------|
+| Order-1 (Identity) | 1 | 0_Fool |
+| Order-2 | 21 | XVI_Tower + 20 Pandemonium Gates |
+| Order-3 | 56 | I_Magician, V_Hierophant, XIV_Temperance + Minors |
+| Order-4 | 42 | II_Priestess, VIII_Justice, XV_Devil + Chaos Gates |
+| Order-7 | 24 | **16 Majors** + 8 Enochian HyperCards |
+
+## TEMPORAL RULES
+1. **Baligon Protocol**: March 20 09:01 UT → Force King 0
+2. **Quinary Splits**: 5° demon/angel pairs in decans.csv
+3. **Heptarchic Cycle**: `(hour * 7 // 24) % 7` → King index
+
+## ESOTERIC EXCEPTIONS
+| Card | Matrix Order | Rationale |
+|------|--------------|-----------|
+| 0_Fool | 1 | Cosmic reset |
+| XVI_Tower | 2 | Chaotic collapse |
+| I_Magician | 3 | Ternary manifestation |
+| II_Priestess | 4 | Lunar phases |
+
+## VALIDATION COMMANDS
+```python
+# Verify core structure
+assert len([m for m in matrices if m['order']==7 and m['tarot_id']]) == 16
+assert get_king(datetime(2025,3,20,9,1)) == 0  # Baligon rule
+
+# Check exceptions
+assert tarot['XVI_Tower']['psl_order'] == 2
+assert tarot['I_Magician']['psl_order'] == 3
