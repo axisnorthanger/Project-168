@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>168-System Heptarchic Cycle Tracker</title>
+    <style>
+        /* === NEW: DARK THEME & TYPERWRITER FONT === */
+        :root {
+            --card-bg: #1a1a1a;
+            --bg-primary: #121212;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-king: #da8c45; /* Warmer, metallic Mercury */
+            --accent-next: #4ecdc4; /* Softer, jewel-toned Jupiter */
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: "American Typewriter", "Courier New", monospace;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 1rem;
+            margin: 0;
+        }
+
+        .heptarchic-widget {
+            max-width: 450px; /* Slightly wider for new content */
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .widget-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .widget-title {
+            font-size: 1.4rem; /* Slightly larger */
+            font-weight: 600;
+            margin: 0 0 0.25rem 0;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .widget-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .king-card {
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .king-card.current {
+            border-left: 4px solid var(--accent-king);
+        }
+
+        .king-card.next {
+            border-left: 4px solid var(--accent-next);
+        }
+
+        .king-badge {
+            display: inline-block;
+            padding: 0.35em 0.65em;
+            font-size: 0.75em;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.375rem;
+            margin-right: 0.5rem;
+        }
+
+        .badge-king {
+            background-color: var(--accent-king);
+            color: black;
+        }
+
+        .badge-next {
+            background-color: var(--accent-next);
+            color: black;
+        }
+
+        .king-name {
+            font-size: 1.25rem; /* Larger for bigger planets */
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+        /* NEW: Make the planet symbol huge */
+        .planet-symbol {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .king-details {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin: 0.25rem 0;
+        }
+
+        .countdown {
+            font-size: 1.8rem; /* Slightly larger countdown */
+            font-weight: 700;
+            text-align: center;
+            margin: 1.5rem 0;
+            font-variant-numeric: tabular-nums;
+            color: var(--accent-king);
+            letter-spacing: 2px;
+        }
+
+        /* NEW: Timezone Styling */
+        .timezones {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+        }
+
+        .tz-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.75rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .tz-label {
+            display: block;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .tz-time {
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .system-status {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="heptarchic-widget">
+        <div class="widget-header">
+            <div class="widget-title">Heptarchic Cycle</div>
+            <div class="widget-subtitle">168-System King Tracker</div>
+        </div>
+
+        <div class="king-card current">
+            <div>
+                <span class="king-badge badge-king">NOW</span>
+                <span id="current-king-index" class="king-name">...</span>
+            </div>
+            <div id="current-king-name" class="king-details">Loading...</div>
+            <div id="current-king-function" class="king-details">...</div>
+        </div>
+
+        <div class="countdown" id="countdown">
+            --:--:--
+        </div>
+
+        <div class="king-card next">
+            <div>
+                <span class="king-badge badge-next">NEXT</span>
+                <span id="next-king-index" class="king-name">...</span>
+            </div>
+            <div id="next-king-name" class="king-details">Loading...</div>
+            <div id="next-king-duration" class="king-details">Starts at --:--:-- UTC</div>
+        </div>
+
+        <!-- NEW: TIMEZONE DISPLAY -->
+        <div class="timezones">
+            <div class="tz-card">
+                <span class="tz-label">PDT (UTC-7)</span>
+                <span class="tz-time" id="time-pdt">--:--:--</span>
+            </div>
+            <div class="tz-card">
+                <span class="tz-label">EDT (UTC-4)</span>
+                <span class="tz-time" id="time-edt">--:--:--</span>
+            </div>
+            <div class="tz-card">
+                <span class="tz-label">CHINA (UTC+8)</span>
+                <span class="tz-time" id="time-china">--:--:--</span>
+            </div>
+            <div class="tz-card">
+                <span class="tz-label">UTC</span>
+                <span class="tz-time" id="time-utc">--:--:--</span>
+            </div>
+        </div>
+
+        <div class="system-status">
+            Last updated: <span id="update-time">--</span>
+        </div>
+    </div>
+
+<script>
+        // King Data Mapping
+        const kings = {
+            0: { name: "Saturn", symbol: "♄", force: "The Hermit", function: "Structure, Limitation, Foundation" },
+            1: { name: "Sun", symbol: "☉", force: "The Emperor", function: "Centrality, Vitality, Consciousness" },
+            2: { name: "Moon", symbol: "☾", force: "The High Priestess", function: "Intuition, Cycles, The Subconscious" },
+            3: { name: "Mars", symbol: "♂", force: "The Tower", function: "Action, Conflict, Energy, Will" },
+            4: { name: "Venus", symbol: "♀", force: "The Empress", function: "Love, Harmony, Beauty, Attraction" },
+            5: { name: "Mercury", symbol: "☿", force: "The Magician", function: "Intellect, Communication, Adaptation" },
+            6: { name: "Jupiter", symbol: "♃", force: "The Hierophant", function: "Expansion, Abundance, Wisdom" }
+        };
+
+        // --- NEW: ACCURATE TIME SYNCHRONIZATION LOGIC ---
+        let timeDrift = 0; // The difference between the real UTC time and the local clock (in milliseconds)
+
+        // Function to fetch the real UTC time and calculate the drift
+        async function syncTime() {
+            try {
+                const response = await fetch('https://worldtimeapi.org/api/ip');
+                const data = await response.json();
+                const realUtc = new Date(data.utc_datetime);
+                const localTime = new Date();
+                timeDrift = realUtc - localTime; // Calculate the offset
+                console.log("Time synced successfully. Drift (ms):", timeDrift);
+            } catch (error) {
+                console.error("Failed to sync time with world clock. Using local time.", error);
+                timeDrift = 0; // Fall back to local time if the fetch fails
+            }
+        }
+
+        // Function to get the accurate, synced time
+        function getSyncedTime() {
+            const localTime = new Date();
+            return new Date(localTime.getTime() + timeDrift);
+        }
+        // --- END TIME SYNC LOGIC ---
+
+        // Core Function to Calculate the Current King from UTC Hour
+        function getKingIndex(utcHour) {
+            return Math.floor((utcHour * 7) / 24) % 7;
+        }
+
+        // Find the next UTC hour when the King will change
+        function getNextChangeHour(currentUtcHour, currentKingIndex) {
+            let h = currentUtcHour;
+            let nextKingIndex = currentKingIndex;
+
+            while (nextKingIndex === currentKingIndex) {
+                h = (h + 1) % 24;
+                nextKingIndex = getKingIndex(h);
+            }
+            return h;
+        }
+
+        // Format time remaining (seconds to HH:MM:SS)
+        function formatTimeRemaining(seconds) {
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = seconds % 60;
+            return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        // NEW: Function to format a time for a timezone offset
+        function getTimeForOffset(utcDate, offsetHours) {
+            const adjustedTime = new Date(utcDate.getTime() + (offsetHours * 60 * 60 * 1000));
+            return adjustedTime.toLocaleTimeString('en-US', { 
+                hour12: false, 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            });
+        }
+
+        // Update the entire widget display
+        function updateWidget() {
+            const now = getSyncedTime(); // CHANGED: Use the synced time
+            const currentUtcHour = now.getUTCHours();
+            const currentKingIndex = getKingIndex(currentUtcHour);
+
+            // Update Current King - WITH BIG SYMBOL
+            document.getElementById('current-king-index').innerHTML = `<span class="planet-symbol">${kings[currentKingIndex].symbol}</span> King ${currentKingIndex}`;
+            document.getElementById('current-king-name').textContent = `${kings[currentKingIndex].name} • ${kings[currentKingIndex].force}`;
+            document.getElementById('current-king-function').textContent = kings[currentKingIndex].function;
+
+            // Calculate next change and Next King
+            const nextChangeHourUtc = getNextChangeHour(currentUtcHour, currentKingIndex);
+            const nextKingIndex = getKingIndex(nextChangeHourUtc);
+
+            // Calculate seconds until next change
+            const currentUtcMinutes = now.getUTCMinutes();
+            const currentUtcSeconds = now.getUTCSeconds();
+            let secondsRemaining = ((nextChangeHourUtc - currentUtcHour - 1) * 3600) + ((60 - currentUtcMinutes - 1) * 60) + (60 - currentUtcSeconds);
+            if (secondsRemaining < 0) secondsRemaining += 24 * 3600;
+
+            // Update Countdown
+            document.getElementById('countdown').textContent = formatTimeRemaining(secondsRemaining);
+
+            // Update Next King - WITH BIG SYMBOL
+            document.getElementById('next-king-index').innerHTML = `<span class="planet-symbol">${kings[nextKingIndex].symbol}</span> King ${nextKingIndex}`;
+            document.getElementById('next-king-name').textContent = `${kings[nextKingIndex].name} • ${kings[nextKingIndex].force}`;
+            const nextChangeTimeString = `${nextChangeHourUtc.toString().padStart(2, '0')}:00:00 UTC`;
+            const nextKingEndHour = getNextChangeHour(nextChangeHourUtc, nextKingIndex);
+            let durationHours = nextKingEndHour - nextChangeHourUtc;
+            if (durationHours < 0) durationHours += 24;
+            document.getElementById('next-king-duration').textContent = `Starts at ${nextChangeTimeString} • Rules for ${durationHours} hour${durationHours !== 1 ? 's' : ''}`;
+
+            // NEW: Update Time Zones
+            document.getElementById('time-utc').textContent = now.toUTCString().split(' ')[4];
+            document.getElementById('time-pdt').textContent = getTimeForOffset(now, -7);
+            document.getElementById('time-edt').textContent = getTimeForOffset(now, -4);
+            document.getElementById('time-china').textContent = getTimeForOffset(now, 8);
+
+            // Update status timestamp
+            document.getElementById('update-time').textContent = now.toUTCString();
+        }
+
+        // --- NEW: INITIALIZATION WITH TIME SYNC ---
+        async function initWidget() {
+            // Show a loading state
+            document.getElementById('current-king-index').textContent = "Syncing Time...";
+            document.getElementById('countdown').textContent = "--:--:--";
+            
+            await syncTime(); // Wait for the time to sync
+            updateWidget(); // Do the first update
+            setInterval(updateWidget, 1000); // Then update every second
+        }
+
+        // Start the widget
+        initWidget();
+    </script>
+
+</body>
+</html>
