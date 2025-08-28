@@ -1,0 +1,44 @@
+# heptarchic_cycle.yaml
+cycle:
+  name: "Heptarchic Cycle"
+  group: "PSL(2,7)"
+  order: 168
+  basis: "UTC Hour"
+  formula: "king_index = ( (current_utc_hour * 7) // 24 ) % 7"
+  duration_hours: ~3.4286
+  kings:
+    - index: 0
+      planet: "Saturn"
+      symbol: "♄"
+      archetype: "The Hermit"
+      function: "Structure, Limitation, Foundation"
+    - index: 1
+      planet: "Sun"
+      symbol: "☉"
+      archetype: "The Emperor"
+      function: "Centrality, Vitality, Consciousness"
+    - index: 2
+      planet: "Moon"
+      symbol: "☾"
+      archetype: "The High Priestess"
+      function: "Intuition, Cycles, The Subconscious"
+    - index: 3
+      planet: "Mars"
+      symbol: "♂"
+      archetype: "The Tower"
+      function: "Action, Conflict, Energy, Will"
+    - index: 4
+      planet: "Venus"
+      symbol: "♀"
+      archetype: "The Empress"
+      function: "Love, Harmony, Beauty, Attraction"
+    - index: 5
+      planet: "Mercury"
+      symbol: "☿"
+      archetype: "The Magician"
+      function: "Intellect, Communication, Adaptation"
+    - index: 6
+      planet: "Jupiter"
+      symbol: "♃"
+      archetype: "The Hierophant"
+      function: "Expansion, Abundance, Wisdom"
