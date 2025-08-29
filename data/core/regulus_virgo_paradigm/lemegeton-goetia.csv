@@ -1,0 +1,73 @@
+Number,GoetiaName,RootName,L1,L2,L3,Rank,Tarot,Day/Night,Power,Title,Metal,Planet
+1,Bael,BetAlefLamed,B,A,L,King,2 of Wands,Day,Invisibility, wisdom, leadership,King,Gold,Sun
+2,Agares,AlefGimelReshSamekh,A,G,S,Duke,3 of Wands,Day,Teaches languages, causes earthquakes,Duke,Copper,Venus
+3,Vassago,VavAlefSamekhGimelVav,V,A,S,Prince,4 of Wands,Day,Discovers things lost or hidden,Prince,Tin,Jupiter
+4,Samigina,SamekhMemYodGimelNunAlef,S,M,Y,Marquis,5 of Pentacles,Day,Teaches liberal sciences, gives familiars,Marquis,Silver,Moon
+5,Marbas,MemReshBetAlefSamekh,M,R,B,President,6 of Pentacles,Day,Cures disease, reveals secrets, changes shape,President,Mercury,Mercury
+6,Valefor,VavAlefLamedPehVavResh,V,A,L,Duke,7 of Pentacles,Day,Steals treasures, friendship,Duke,Copper,Venus
+7,Amon,AlefMemVavNun,A,M,V,Marquis,8 of Pentacles,Day,Reconciles relationships, reveals past and future,Marquis,Silver,Moon
+8,Barbatos,BetReshBetTetVavSamekh,B,R,B,Duke,9 of Pentacles,Day,Understands animal speech, finds treasures,Duke,Copper,Venus
+9, Paimon,PeAlefYodMemVavNun,P,A,Y,King,10 of Pentacles,Day,Teaches arts, sciences, secrets,King,Gold,Sun
+10,Buer,BetVavAlefResh,B,V,A,President,2 of Swords,Day,Heals diseases, gives familiars,President,Mercury,Mercury
+11,Gusion,GimelVavSamekhYodVavNun,G,V,S,Duke,3 of Swords,Day,Tells all past/present/future, reconciles friends,Duke,Copper,Venus
+12,Sitri,SamekhYodTetReshYod,S,Y,T,Prince,4 of Swords,Day,Incites love, reveals secrets,Prince,Tin,Jupiter
+13,Beleth,BetLamedTetHe,B,L,T,King,5 of Swords,Day,Promotes love, fear, eloquence,King,Gold,Sun
+14,Leraje,LamedReshAlefYodHay,L,R,A,Marquis,6 of Swords,Day,Causes conflict, wounds,Marquis,Silver,Moon
+15,Eligos,AlephLamedYodGimelVavSamekh,A,L,Y,Duke,7 of Swords,Day,Reveals hidden mysteries, gets favor,Duke,Copper,Venus
+16,Zepar,ZayinPehResh,Z,P,R,Duke,8 of Swords,Day,Induces love, infertility,Duke,Copper,Venus
+17, Botis,BetVavTetYodSamekh,B,V,T,President,9 of Swords,Day,Tells secrets, reconciles enemies,President,Mercury,Mercury
+18,Bathin,BetTetYodNun,B,T,Y,Duke,10 of Swords,Day,Transports people, teaches plants/stones,Duke,Copper,Venus
+19,Sallos,SamekhLamedVavSamekh,S,L,V,Duke,2 of Cups,Day,Reconciles relationships, love,Duke,Copper,Venus
+20, Purson,PeVavReshSamekhVavNun,P,V,R,King,3 of Cups,Day,Discovers treasures, answers questions,King,Gold,Sun
+21,Marax,MemReshAlephTet, M,R,A,Earl,4 of Cups,Day,Teaches astronomy, herbs, Earl,Tin,Jupiter
+22,Ipos,YodPehVavSamekh, Y,P,V,Earl,5 of Cups,Day,Teaches wit, courage, Earl,Tin,Jupiter
+23,Aim,AlefYodMem, A,Y,M,Duke,6 of Cups,Day,Spreads fire, answers queries, Duke,Copper,Venus
+24,Naberius,NunBetReshYodVavSamekh,N,B,R,Marquis,7 of Cups,Day,Restores lost honor, eloquence,Marquis,Silver,Moon
+25,Glasya-Labolas,GimelLamedSamekhYodAlephLamedBetVavLamedAlephSamekh,G,L,S,President,8 of Cups,Night,Incites bloodshed, invisibility,President,Mercury,Mercury
+26,Bune,BetVavNunHe,B,V,N,Duke,9 of Cups,Night,Makes rich, eloquent, wisdom,Duke,Copper,Venus
+27,Ronove,ReshVavNunVavBetHe,R,V,N,Marquis,10 of Cups,Night,Teaches languages, gains favor,Marquis,Silver,Moon
+28,Berith,BetReshYodTav,B,R,Y,Duke,2 of Pentacles,Night,Truth, prophecy, alchemy,Duke,Copper,Venus
+29,Astaroth,AlephSamekhTavReshVavTav,A,S,T,Duke,3 of Pentacles,Night,Teaches sciences, gives answers,Duke,Copper,Venus
+30,Forneus,PehReshNunVavSamekh,P,R,N,Marquis,4 of Pentacles,Night,Teaches rhetoric, gains favor,Marquis,Silver,Moon
+31,Foras,PehReshAlefSamekh,P,R,A,President,5 of Pentacles,Night,Teaches logic, makes rich,President,Mercury,Mercury
+32,Asmodeus,AlephSamekhMemDaletVavSamekh,A,S,M,King,6 of Pentacles,Night,Instigates gambling, lust,King,Gold,Sun
+33,Gaap,GimelAlefPeh,G,A,P,President,7 of Pentacles,Night,Teaches philosophy, makes men invisible,President,Mercury,Mercury
+34,Furfur,PehVavReshPehVavResh,P,V,R,Earl,8 of Pentacles,Night,Creates storms, thunder, Earl,Tin,Jupiter
+35,Marchosias,MemReshChetVavShinYodSamekh,M,R,C,Marquis,9 of Pentacles,Night,Fights demons, loyal,Marquis,Silver,Moon
+36,Stolas,SamekhTavVavLamedSamekh,S,T,V,Prince,10 of Pentacles,Night,Teaches astronomy, plants,Prince,Tin,Jupiter
+37,Phenex,PehNunSamekh,P,N,S,Marquis,2 of Swords,Night,Inspires poetry, reveals secrets,Marquis,Silver,Moon
+38,Halphas,ChetLamedPehSamekh,C,L,P,Earl,3 of Swords,Night,Builds fortresses, arms cities,Earl,Tin,Jupiter
+39,Malphas,MemLamedPehSamekh,M,L,P,President,4 of Swords,Night,Builds houses, deceives enemies,President,Mercury,Mercury
+40,Raum,ReshAlefVavMem,R,A,V,Earl,5 of Swords,Night,Steals treasures, destroys cities,Earl,Tin,Jupiter
+41,Focalor,PehVavKafLamedResh,P,V,K,Duke,6 of Swords,Night,Kills enemies, sinks ships,Duke,Copper,Venus
+42,Vepar,VavPehResh,V,P,R,Duke,7 of Swords,Night,Rules seas, wounds with putrefaction,Duke,Copper,Venus
+43,Sabnock,SamekhBetNunVavKaf,S,B,N,Marquis,8 of Swords,Night,Builds towers/furnishes weapons,Marquis,Silver,Moon
+44,Shax,ShinChetSamekh,Sh,C,S,Marquis,9 of Swords,Night,Steals money, causes deafness,Marquis,Silver,Moon
+45,Vine,VavYodNunHe,V,Y,N,King,10 of Swords,Night,Discloses witches, makes storms,King,Gold,Sun
+46,Bifrons,BetYodPehReshVavNunSamekh,B,Y,P,Earl,2 of Cups,Night,Changes the dead's place, astronomy,Earl,Tin,Jupiter
+47,Uvall,VavVavLamed,V,V,L,Duke,3 of Cups,Night,Discovers thieves, finds treasures,Duke,Copper,Venus
+48,Haagenti,HeAlefGimelNunTetYod, H,A,G,President,4 of Cups,Night,Turns metals to gold, water to wine,President,Mercury,Mercury
+49,Crocell,KafReshVavKafLamed,C,R,V, Duke,5 of Cups,Night,Teaches geometry, creates storms,Duke,Copper,Venus
+50, Furcas, PeVavReshKafSamekh,F,V,R, Knight,6 of Cups,Night,Teaches philosophy, astrology,Knight,Iron,Mars
+51, Balam,BetLamedMem,B,L,M,King,7 of Cups,Night,Answers questions, gives wit,King,Gold,Sun
+52,Alloces,AlephLamedVavKafSamekh,A,L,V,Knight,8 of Cups,Night,Teaches astronomy, warfare,Knight,Iron,Mars
+53,Caim,KafAlefYodMem,C,A,Y,President,9 of Cups,Night,Answers questions, reveals truth,President,Mercury,Mercury
+54,Murmur,MemVavReshMemVavResh,M,V,R,Duke,10 of Cups,Night,Teaches philosophy, necromancy,Duke,Copper,Venus
+55,Orobas,AyinReshVavBetSamekh,O,R,B,Prince,2 of Pentacles,Night,Tells of past, present, future,Prince,Tin,Jupiter
+56,Gremory,GimelReshMemReshYod,G,R,M,Duke,3 of Pentacles,Night,Discovers treasures, love,Duke,Copper,Venus
+57,Ose,AlephSamekhHe,A,S,H,President,4 of Pentacles,Night,Transforms shape, answers questions,President,Mercury,Mercury
+58,Amy,AlephMemYod,A,M,Y,President,5 of Pentacles,Night,Teaches astronomy, liberal sciences,President,Mercury,Mercury
+59,Orias,AyinReshYodSamekh,O,R,Y,Marquis,6 of Pentacles,Night,Teaches astrology, changes shape,Marquis,Silver,Moon
+60,Vapula,VavPehLamedHe,V,P,L,Duke,7 of Pentacles,Night,Teaches philosophy, mechanics,Duke,Copper,Venus
+61,Zagan,ZayinGimelNun,Z,G,N,King,8 of Pentacles,Night,Makes men witty, turns metals to coins,King,Gold,Sun
+62,Valac,VavLamedKaf,V,L,K,President,9 of Pentacles,Night,Discovers treasures, snakes,President,Mercury,Mercury
+63,Andras,AlephNunDaletReshSamekh,A,N,D,Marquis,10 of Pentacles,Night,Sows discord, kills enemies,Marquis,Silver,Moon
+64,Haures,HeVavReshSamekh,H,V,R,Duke,2 of Swords,Night,Destroys enemies, burns, gives true answers,Duke,Copper,Venus
+65,Andrealphus,AlephNunDaletReshAlephLamedPehVavSamekh,A,N,D,Marquis,3 of Swords,Night,Teaches astronomy, eloquence,Marquis,Silver,Moon
+66,Cimejes,KafMemYodSamekh,C,M,Y,Marquis,4 of Swords,Night,Teaches grammar, logic,Marquis,Silver,Moon
+67,Amdusias,AlephMemDaletVavSamekhYodAlephSamekh,A,M,D,Duke,5 of Swords,Night,Causes music, makes trees bend,Duke,Copper,Venus
+68,Belial,BetLamedYodAlephLamed,B,L,Y,King,6 of Swords,Night,Grants senatorship, favor of friends/enemies,King,Gold,Sun
+69,Decarabia,DaletKafReshBetYodHe,D,K,R,Marquis,7 of Swords,Night,Knows virtues of herbs/stones,Marquis,Silver,Moon
+70,Seere,SamekhYodReshHe,S,Y,R,Prince,8 of Swords,Night,Finds lost things, swift,Prince,Tin,Jupiter
+71,Dantalion,DaletNunTetLamedYodVavNun,D,N,T,Duke,9 of Swords,Night,Teaches all arts & sciences, thoughts of men,Duke,Copper,Venus
+72,Andromalius,AlephNunDaletReshVavMemLamedYodVavSamekh,A,N,D,Earl,10 of Swords,Night,Returns stolen goods, reveals thieves,Earl,Tin,Jupiter
