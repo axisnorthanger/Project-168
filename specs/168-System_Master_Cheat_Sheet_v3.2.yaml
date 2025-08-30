@@ -1,0 +1,163 @@
+# 168-System Master Cheat Sheet (Locked)
+# Version: 3.2 # <- Version Bump
+# Description: The definitive reference for 168-System mappings, rules, and validation commands.
+# GitHub Location: /specs/168-System_Master_Cheat_Sheet_v3.2.yaml # <- Location Update
+# Update Reason: Finalized data architecture for Shemhamphorasch & Goetia integration under Regulus-Virgo paradigm.
+
+core_mathematics:
+  psl_group: "PSL(2,7)"
+  group_order: 168
+  element_breakdown:
+    - order: 1
+      count: 1
+      occult_mapping: "0_Fool"
+      function: "Cosmic Reset / Identity"
+    - order: 2
+      count: 21
+      occult_mapping: "XVI_Tower + 20_Pandemonium_Gates"
+      function: "Binary Opposition / Chaos & Collapse"
+    - order: 3
+      count: 56
+      occult_mapping: "I_Magician, V_Hierophant, XIV_Temperance + Minors"
+      function: "Ternary Manifestation / Structure"
+    - order: 4
+      count: 42
+      occult_mapping: "II_Priestess, VIII_Justice, XV_Devil + Chaos_Gates"
+      function: "Quaternary Stability / Judgment & Order"
+    - order: 7
+      count: 24
+      occult_mapping: "16_Majors + 8_Enochian_HyperCards"
+      function: "Heptadic Mystery / Primary Archetypes"
+  # --- NEW FIELD ---
+  cyclic_manifestation:
+    cycle_72: "Angelic/Demonic Time Cycle (20-min periods)"
+    function: "Micro-manifestation of macro-archetypes within the Heptarchic framework"
+
+temporal_rules:
+  baligon_protocol:
+    event: "March 20 09:01 UTC"
+    action: "SET_FORCE_KING = 0"
+    description: "Annual reset event. Sets the system's epoch for the yearly cycle."
+  # --- NEW RULE ---
+  angelic_cycle:
+    description: "72-fold daily cycle of Shemhamphorasch Angels. Anchored to Local Apparent Solar Time in Jerusalem."
+    anchor_city: "Jerusalem, Israel"
+    timezone: "Asia/Jerusalem (UTC+2/+3)"
+    period_duration_minutes: 20
+    data_source: "/data/core/shemhamphorasch.csv"
+  heptarchic_cycle:
+    formula: "king_index = ( (current_utc_hour * 7) // 24 ) % 7"
+    output_range: [0, 1, 2, 3, 4, 5, 6]
+    cycle_duration_hours: ~3.4286
+  quinary_splits:
+    data_source: "decans.csv"
+    key: "decans.csv::degree"
+    description: "Manages the 5° demon/angel pairs for decanic analysis. Links to /data/core/decans.csv"
+  regulus_virgo_anchor:
+    event: "November 18 06:00 UTC"
+    year: 2011
+    action: "SET_ARCHETYPAL_FIELD = Regulus_Virgo"
+    description: "Astronomical ingress of Regulus into Virgo (IAU boundary)"
+    data_source: "NASA JPL Horizons System"
+  manifestation_cycles:
+    - cycle: "First Saturn Cycle"
+      period: "2025-2040"
+      description: "Structured maturation period for Regulus-Virgo paradigm"
+      phases:
+        - phase: "Structural Foundation"
+          years: "2025-2029"
+        - phase: "Crisis of Integrity" 
+          years: "2030-2034"
+        - phase: "Conscious Maturation"
+          years: "2035-2040"
+
+# --- NEW SECTION ---
+data_architecture:
+  core_datasets:
+    - path: "/data/core/decans.csv"
+      description: "Zodiacal decans; planetary rulers & minor arcana mappings."
+    - path: "/data/core/psl27_matrices.csv"
+      description: "Primary PSL(2,7) matrix mappings for 168 elements."
+    - path: "/data/core/shemhamphorasch.csv"
+      description: "72 Angels of the Shemhamphorasch; 20-minute time cycle (Jerusalem-anchored)."
+  regulus_virgo_paradigm_datasets:
+    - path: "/data/core/regulus_virgo_paradigm/lemegeton-goetia.csv"
+      description: "Goetic demons reassigned via the Regulus-Virgo principle (precision-manifestation). Primary data for Hendoku Iyaku process."
+
+esoteric_exceptions:
+  - card: "0_Fool"
+    matrix_order: 1
+    rationale: "Cosmic reset. The identity element."
+  - card: "XVI_Tower"
+    matrix_order: 2
+    rationale: "Chaotic collapse. Binary opposition."
+  - card: "I_Magician"
+    matrix_order: 3
+    rationale: "Ternary manifestation. The first active principle. Current Force King alignment."
+  - card: "II_Priestess"
+    matrix_order: 4
+    rationale: "Lunar phases. Quaternary stability."
+  - card: "IX_Hermit"
+    matrix_order: 7
+    rationale: "Regulus in Virgo manifestation - guided wisdom in service. Governs the reassignment of the Goetic hierarchy."
+
+framework_integrations:
+  hendoku_iyaku:
+    principle: "Poison into Medicine"
+    input_range: [-10, 0]
+    output_range: [1, 10]
+    process: "Aethyric descent and alchemical transmutation"
+    file: "/modules/hendoku_iyaku.py"
+    data_sources:
+      - "/data/core/shemhamphorasch.csv"
+      - "/data/core/regulus_virgo_paradigm/lemegeton-goetia.csv"
+  clinical_module:
+    name: "DSM-5 Archetypal Framing Engine"
+    purpose: "Non-clinical reframing of self-reported conditions"
+    disclaimer: "Does not provide medical diagnosis or treatment"
+    file: "/modules/dsm5_archetypal_integration.py"
+  regulus_virgo_paradigm:
+    core_archetype: "The Servant-King"
+    synthesis: "Regulan sovereignty filtered through Virgoan refinement"
+    manifestation: "Leadership through service, power through precision"
+    established_date: "2011-11-18"
+    current_status: "Active and building (2025-2040 maturation cycle)"
+    # --- NEW FIELD ---
+    data_manifestation: "Reassignment of Goetic demons to decanic degrees via precision (lemegeton-goetia.csv)"
+
+validation_commands:
+  - name: "Validate Order-7 Major Arcana Count"
+    command: 'assert len([m for m in matrices if m["order"]==7 and m["tarot_id"] != ""]) == 16'
+    description: "Ensures 16 Major Arcana are correctly mapped to order-7 elements."
+  - name: "Validate Baligon Protocol"
+    command: "assert get_king(datetime(2025, 3, 20, 9, 1)) == 0"
+    description: "Tests the Baligon Protocol reset function."
+  - name: "Validate Esoteric Exceptions"
+    command: |
+      assert get_matrix_order('XVI_Tower') == 2
+      assert get_matrix_order('I_Magician') == 3
+      assert get_matrix_order('IX_Hermit') == 7
+    description: "Tests the matrix order for specific exception cards."
+  - name: "Validate Regulus Timing"
+    command: "assert get_astronomical_anchor('Regulus_Virgo') == datetime(2011, 11, 18, 6, 0)"
+    description: "Verifies the Regulus-Virgo ingress anchor date."
+  - name: "Validate Hendoku Iyaku Range"
+    command: "assert -10 <= soft_input_value <= 0"
+    description: "Ensures soft input values are within valid negative range."
+  - name: "Validate Current Force King"
+    command: "assert 0 <= current_force_king() <= 6"
+    description: "Verifies the current Force King is within valid range."
+  # --- NEW COMMAND ---
+  - name: "Validate Angelic Cycle Anchor"
+    command: "assert get_angelic_period(datetime(2025, 3, 20, 9, 1)) == 19"
+    description: "Tests the Jerusalem-anchored time conversion for the Baligon epoch."
+
+# Version 3.2 Change Log:
+# - Added `angelic_cycle` temporal rule with Jerusalem anchor.
+# - Added `cyclic_manifestation` to core mathematics.
+# - Added `data_architecture` section documenting core CSV paths.
+# - Added `regulus_virgo_paradigm_datasets` with path to `lemegeton-goetia.csv`.
+# - Added `data_sources` to `hendoku_iyaku` framework integration.
+# - Added `data_manifestation` to `regulus_virgo_paradigm` integration.
+# - Added `Validate Angelic Cycle Anchor` command.
+# - Maintained backward compatibility with all v3.1 specifications.
