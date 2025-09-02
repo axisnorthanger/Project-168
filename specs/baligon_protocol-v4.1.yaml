@@ -1,0 +1,22 @@
+# baligon_protocol.yaml
+# Single Source of Truth (SSOT) for the annual system reset event.
+# Version: 4.1
+# GitHub Location: /specs/baligon_protocol.yaml
+
+protocol:
+  name: "Baligon Protocol"
+  description: "Annual reset event. Sets the system's epoch for the yearly cycle by activating Force King 0 (Baligon)."
+  trigger:
+    type: "Fixed Annual DateTime"
+    event: "March 20 09:01 UTC"
+    # --- Potential future fields ---
+    # astrological_chart: {}
+    # ritual_actions: []
+  action: "SET_FORCE_KING = 0"
+  target_king:
+    index: 0
+    name: "Baligon"
+    reference: "/specs/heptarchic_cycle.yaml" # Links the protocol to the king definition
+
+# Version 4.1 Change Log:
+# - Initial creation as SSOT for the protocol, extracted from the master cheat sheet.

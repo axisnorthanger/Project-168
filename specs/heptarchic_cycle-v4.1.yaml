@@ -1,0 +1,68 @@
+# heptarchic_cycle-v4.1.yaml
+# Single Source of Truth (SSOT) for the Heptarchic Force Kings and their cycle.
+# Version: 4.1 (Integrated)
+# GitHub Location: /specs/heptarchic_cycle.yaml
+
+cycle:
+  name: "Heptarchic Cycle"
+  group: "PSL(2,7)"
+  order: 168
+  basis: "UTC Hour"
+  formula: "king_index = ( (current_utc_hour * 7) // 24 ) % 7"
+  duration_hours: ~3.4286
+  kings:
+    - index: 0
+      name: "Baligon"
+      title: "Prime Mover"
+      planet: "Saturn"
+      symbol: "♄"
+      archetype: "The Hermit"
+      function: "Cosmic reset. Structural foundation, limitation, and initiation of the cycle. Activated by the Baligon Protocol."
+    - index: 1
+      name: "Bobogel"
+      title: "Solar King"
+      planet: "Sun"
+      symbol: "☉"
+      archetype: "The Emperor"
+      function: "Centrality, vitality, consciousness, and sovereign will. The central illuminating force."
+    - index: 2
+      name: "Blumaza"
+      title: "Lunar King"
+      planet: "Moon"
+      symbol: "☾"
+      archetype: "The High Priestess"
+      function: "Intuition, reflection, cycles, the subconscious, and fluid adaptation."
+    - index: 3
+      name: "Bnaspol"
+      title: "Martian King"
+      planet: "Mars"
+      symbol: "♂"
+      archetype: "The Tower"
+      function: "Dynamic action, raw energy, conflict, willpower, and forceful change."
+    - index: 4
+      name: "Babael"
+      title: "Mercurial King"
+      planet: "Mercury"
+      symbol: "☿"
+      archetype: "The Magician"
+      function: "Intellect, communication, cunning, adaptation, and mediation between forces."
+    - index: 5
+      name: "Bnapsen"
+      title: "Jovial King"
+      planet: "Jupiter"
+      symbol: "♃"
+      archetype: "The Hierophant"
+      function: "Expansion, abundance, wisdom, benevolence, and lawful order."
+    - index: 6
+      name: "Brarges"
+      title: "Venusian King"
+      planet: "Venus"
+      symbol: "♀"
+      archetype: "The Empress"
+      function: "Love, harmony, beauty, attraction, creativity, and relational synthesis."
+
+# Version 4.1 Change Log (Integrated):
+# - ADDED: Heptarchic spirit names (`name`), titles (`title`), and detailed functions from the master cheat sheet.
+# - INTEGRATED: Planetary associations, symbols, and archetypes from the original cycle definition.
+# - SYNCHRONIZED: The cycle remains a 7-king system based on the traditional planets.
+# - PURPOSE: This file is now the complete SSOT for all Heptarchic Cycle properties.
