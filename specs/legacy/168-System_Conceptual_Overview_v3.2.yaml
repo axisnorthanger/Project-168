@@ -3,6 +3,9 @@
 # Description: The definitive reference for 168-System mappings, rules, and validation commands.
 # GitHub Location: /specs/168-System_Master_Cheat_Sheet_v3.2.yaml # <- Location Update
 # Update Reason: Finalized data architecture for Shemhamphorasch & Goetia integration under Regulus-Virgo paradigm.
+# Rename 168-System_Master_Cheat_Sheet_v3.2.yaml to 168-System_Conceptual_Overview_v3.2.yaml
+# move it to specs/legacy/ folder. It's still useful for understanding the high-level design intent.
+
 
 core_mathematics:
   psl_group: "PSL(2,7)"
