@@ -1,0 +1,38 @@
+# PROJECT-168 CONTEXT CARRYOVER
+# This YAML summarizes the key architectural decisions made in the previous session.
+# Use it to maintain continuity in the new chat.
+
+session_achievements:
+  - "Integrated Ars Paulina (Zodiac Angels) and Ars Almadel (Chorases) data from the Lemegeton into the project's data architecture."
+  - "Defined clear CSV file placements within /data/raw/ and /data/processed/."
+  - "Merged and resolved version conflicts between v3.2 and v4 of the Master Cheat Sheet, creating a unified v4.1 YAML spec."
+  - "Established the Single Source of Truth (SSOT) principle for project configuration."
+  - "Created and populated the definitive SSOT for the Heptarchic Cycle: /specs/heptarchic_cycle.yaml"
+  - "Synchronized the Master Cheat Sheet to point to SSOT files, removing data duplication."
+
+architectural_decisions:
+  data_placement:
+    lemegeton_raw: "/data/raw/lemegeton/"
+    lemegeton_processed: "/data/processed/lemegeton/"
+  spec_files:
+    master_spec: "/specs/168-System_Master_Cheat_Sheet-v4.1.yaml"
+    heptarchic_cycle_ssot: "/specs/heptarchic_cycle.yaml" # Contains full king definitions
+  pattern: "Master Spec contains references & summaries; Detailed configs are in dedicated SSOT YAML files."
+
+next_steps:
+  immediate:
+    - "Create and implement the Baligon Protocol SSOT file: /specs/baligon_protocol.yaml"
+    - "Update the master spec to point to the new Baligon SSOT file."
+    - "Finalize the 7 vs. 8 king decision for the Heptarchic Cycle (currently implemented as 8)."
+  future:
+    - "Ingest the parsed Lemegeton data (CSV files) into the application's runtime or database."
+    - "Develop the astrological timer logic using the Zodiac Angels data."
+    - "Build the ritual construction tool integrating Chorases, Zodiac Angels, and Force Kings."
+
+files_to_reference:
+  - "168-System_Master_Cheat_Sheet-v4.1.yaml (Current Master Spec)"
+  - "heptarchic_cycle.yaml (Heptarchic SSOT)"
+  - "ars_paulina_ii_zodiac_degrees.csv (Ingested Data)"
+  - "ars_almadel_chorases.csv (Ingested Data)"
+
+# Use this context to continue development seamlessly.
