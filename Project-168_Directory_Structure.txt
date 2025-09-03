@@ -18,7 +18,7 @@ project-168/
 │   ├── esoteric/    
 │   │   ├── enochian_heptarchy.csv
 │   │   ├── goetia_demons.csv
-│   │   └──tarot.csv
+│   │   └── tarot.csv
 │   │
 │   ├── hypercards/ 
 │   │   ├── core.py
@@ -46,6 +46,7 @@ project-168/
 │   └── index.html     		#Web entry point
 │
 ├── scripts/
+│   ├── data_analyzer.py
 │   ├── temporal_sync.py
 │   └── modules/                        # Python scripts
 │       └── dsm5_archetypal_integration.py
