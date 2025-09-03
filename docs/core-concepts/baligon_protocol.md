@@ -1,9 +1,9 @@
-**Filename:** `Baligon_Protocol.md`  
+**Filename:** `baligon_protocol.md`  
 **Location:** `/project-168/docs/core-concepts/baligon_protocol.md`  
 **Version:** 1.0  
-**Based on:** `Project-168_Baligon_Protocol.yaml` (v3.2)  
+**Based on:** `baligon_protocol.yaml` (v4.1)  
 **Author:** 168-System Architect  
-**Last Updated:** 2025-08-24  
+**Last Updated:** 2025-09-03  
 
 This document is the canonical reference for the Baligon Protocol. All implementations must align with this specification.
 
@@ -73,8 +73,8 @@ At 09:01 UTC on March 20, perform a system-wide reading. The card drawn represen
 - **v3.2 (2025-08-24):** Finalized after architectural review. Removed Kickstarter section. Added validation tests and implementation code.
 
 ## Related Files
-- `Project-168_Baligon_Protocol.yaml` (v3.2)  
-- `Project-168_Core_Mechanics.yaml`  
+- `specs/baligon_protocol.yaml` (v4.1)  
+- `specs/Project-168_Core_Mechanics.yaml`  
 - `/scripts/temporal_sync.py` (implementation)
 
 ---
