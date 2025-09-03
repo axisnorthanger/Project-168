@@ -73,8 +73,8 @@ At 09:01 UTC on March 20, perform a system-wide reading. The card drawn represen
 - **v3.2 (2025-08-24):** Finalized after architectural review. Removed Kickstarter section. Added validation tests and implementation code.
 
 ## Related Files
-- `specs/baligon_protocol.yaml` (v4.1)  
-- `specs/Project-168_Core_Mechanics.yaml`  
+- `/specs/baligon_protocol.yaml` (v4.1)  
+- `/specs/Project-168_Core_Mechanics.yaml`  
 - `/scripts/temporal_sync.py` (implementation)
 
 ---
