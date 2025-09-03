@@ -1,0 +1,81 @@
+# Created: Tue, September 02, 2025 @ 3:06:58 AM [PDT-7]
+# DeepSeek Chat: Zodiac Angels Data in CSV Format
+# https://chat.deepseek.com/a/chat/s/48f21f79-5a13-4898-9041-107e92837b2f
+# Last Updated: 2025-09-03
+
+
+project-168/
+│
+├── data/
+│   ├── core/                           # Core data
+│   │   ├── decans.csv
+│   │   ├── psl27_matrices.csv
+│   │   ├── shemhamphorasch.csv
+│   │   ├── temporal_events.csv
+│   │   └── regulus_virgo_paradigm/
+│   │       └── lemegeton-goetia.csv    # Existing Goetic data (Ars Goetia)
+│   │
+│   ├── esoteric/    
+│   │   ├── enochian_heptarchy.csv
+│   │   ├── goetia_demons.csv
+│   │   └──tarot.csv
+│   │
+│   ├── hypercards/ 
+│   │   ├── core.py
+│   │   ├── dynamic_torus.txt
+│   │   └── hypercards_datasets.csv
+│   │
+│   ├── raw/                            # NEW: Raw, unprocessed source data
+│   │   └── lemegeton/                  # NEW: Home for all Lemegeton books
+│   │       ├── ars_goetia/             # (Potential future folder for raw Goetia)
+│   │       ├── ars_paulina/            # NEW: Raw Ars Paulina data
+│   │       │   └── ars_paulina_ii_zodiac_degrees.csv
+│   │       └── ars_almadel/            # NEW: Raw Ars Almadel data
+│   │           └── ars_almadel_chorases.csv
+│   │
+│   └── processed/                      # NEW: Cleaned, merged, application-ready data
+│       └── lemegeton/
+│           └── combined_zodiac_chorases.csv  # NEW: Unified ritual/astrological table
+│
+├── docs/
+│   ├── archives/                       # Old versions
+│   ├── core-concepts/
+│   │   └── baligon_protocol.md
+│   ├── gitweb/
+│   │  └── heptarchic-widget.html
+│   └── index.html     		#Web entry point
+│
+├── scripts/
+│   ├── temporal_sync.py
+│   └── modules/                        # Python scripts
+│       └── dsm5_archetypal_integration.py
+│
+├── specs/                              	# Specs use YAML format
+│   ├── 168-System_Master_Cheat_Sheet-v4.1.yaml
+│   ├── baligon_protocol.yaml
+│   ├── heptarchic_cycle.yaml
+│   ├── Project-168_Core_Mechanics.yaml
+│   ├── Project-168_Logo_v1.yaml
+│   └── legacy
+│
+├── venv/                               	# Virtual environment
+│
+├── main.py                             	# Application entry point
+├── Project-168_Directory_Structure.txt
+└── README.md
+
+
+
+
+
+Notes..............
+Rationale for the Merged Structure:
+Logical Separation: The new raw/ and processed/ directories create a clear data pipeline, separating original source material from data transformed for application use. This is a standard and robust practice.
+
+Consistency with Existing Data: Your existing data/core/lemegeton-goetia.csv fits perfectly into this new schema. It is effectively already a processed file (a curated list of Goetic demons). If you acquired the raw source text for the Ars Goetia in the future, it would belong in data/raw/lemegeton/ars_goetia/.
+
+Scalability: This structure can easily accommodate other parts of the Lemegeton (e.g., Ars Notoria) and other grimoires (e.g., The Sacred Magic of Abramelin the Mage) by adding new folders under raw/ and processed/.
+
+Clarity: The purpose of each data file is now clear from its location. The core/ directory remains for fundamental, system-critical data, while raw/ and processed/ handle more extensive textual and grimoire data ingestion.
+
+This merged structure enhances organization without disrupting your existing work, making the repository more scalable and maintainable.
