@@ -253,11 +253,18 @@
             const currentKingEndTime = new Date(currentUtcTime);
             currentKingEndTime.setUTCHours(currentKingStartHour + kingDuration, 0, 0, 0);
             
+            // If we've passed the end time today, set it for tomorrow
+            if (currentKingEndTime <= currentUtcTime) {
+                currentKingEndTime.setUTCDate(currentKingEndTime.getUTCDate() + 1);
+            }
+            
             return currentKingEndTime;
         }
 
         // Format time remaining (seconds to HH:MM:SS)
         function formatTimeRemaining(seconds) {
+            if (seconds < 0) return "00:00:00";
+            
             const h = Math.floor(seconds / 3600);
             const m = Math.floor((seconds % 3600) / 60);
             const s = seconds % 60;
@@ -267,12 +274,10 @@
         // Function to format a time for a timezone offset
         function getTimeForOffset(utcDate, offsetHours) {
             const adjustedTime = new Date(utcDate.getTime() + (offsetHours * 60 * 60 * 1000));
-            return adjustedTime.toLocaleTimeString('en-US', { 
-                hour12: false, 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit' 
-            });
+            const hours = adjustedTime.getUTCHours().toString().padStart(2, '0');
+            const minutes = adjustedTime.getUTCMinutes().toString().padStart(2, '0');
+            const seconds = adjustedTime.getUTCSeconds().toString().padStart(2, '0');
+            return `${hours}:${minutes}:${seconds}`;
         }
 
         // Get Jerusalem time (UTC+2 in winter, UTC+3 in summer - IDT)
@@ -281,18 +286,18 @@
             const year = utcDate.getUTCFullYear();
             const month = utcDate.getUTCMonth();
             const date = utcDate.getUTCDate();
-    
+            
             // Calculate DST start (last Friday before April 2)
             const dstStart = new Date(Date.UTC(year, 2, 31)); // March 31
             dstStart.setUTCDate(31 - (dstStart.getUTCDay() + 2) % 7);
-    
+            
             // Calculate DST end (last Sunday in October)
             const dstEnd = new Date(Date.UTC(year, 9, 31)); // October 31
-            dstEnd.setUTCDate(31 - dstEnd.getUTCDay());
-    
+            dstEnd.setUTCDate(31 - dstEnd.getUTDay());
+            
             const now = new Date(Date.UTC(year, month, date));
             const isDST = now >= dstStart && now <= dstEnd;
-    
+            
             const offset = isDST ? 3 : 2;
             return getTimeForOffset(utcDate, offset);
         }
@@ -319,45 +324,49 @@
 
         // Update the entire widget display
         function updateWidget() {
-            const now = new Date();
-            const currentUtcHour = now.getUTCHours();
-            const currentKingIndex = getKingIndex(currentUtcHour);
+            try {
+                const now = new Date();
+                const currentUtcHour = now.getUTCHours();
+                const currentKingIndex = getKingIndex(currentUtcHour);
 
-            // Update Current King
-            document.getElementById('current-king-index').innerHTML = `<span class="planet-symbol">${kings[currentKingIndex].symbol}</span> King ${currentKingIndex}`;
-            document.getElementById('current-king-name').textContent = `${kings[currentKingIndex].name} • ${kings[currentKingIndex].force}`;
-            document.getElementById('current-king-function').textContent = kings[currentKingIndex].function;
+                // Update Current King
+                document.getElementById('current-king-index').innerHTML = `<span class="planet-symbol">${kings[currentKingIndex].symbol}</span> King ${currentKingIndex}`;
+                document.getElementById('current-king-name').textContent = `${kings[currentKingIndex].name} • ${kings[currentKingIndex].force}`;
+                document.getElementById('current-king-function').textContent = kings[currentKingIndex].function;
 
-            // Calculate next change time and Next King
-            const nextChangeTime = getNextChangeTime(now, currentKingIndex);
-            const nextKingIndex = (currentKingIndex + 1) % 7;
+                // Calculate next change time and Next King
+                const nextChangeTime = getNextChangeTime(now, currentKingIndex);
+                const nextKingIndex = (currentKingIndex + 1) % 7;
 
-            // Calculate seconds until next change
-            const secondsRemaining = Math.floor((nextChangeTime - now) / 1000);
+                // Calculate seconds until next change
+                const secondsRemaining = Math.floor((nextChangeTime - now) / 1000);
 
-            // Update Countdown
-            document.getElementById('countdown').textContent = formatTimeRemaining(secondsRemaining);
+                // Update Countdown
+                document.getElementById('countdown').textContent = formatTimeRemaining(secondsRemaining);
 
-            // Update Next King
-            document.getElementById('next-king-index').innerHTML = `<span class="planet-symbol">${kings[nextKingIndex].symbol}</span> King ${nextKingIndex}`;
-            document.getElementById('next-king-name').textContent = `${kings[nextKingIndex].name} • ${kings[nextKingIndex].force}`;
-            
-            const nextChangeTimeString = formatUTCTime(nextChangeTime);
-            const kingDuration = 24 / 7;
-            document.getElementById('next-king-duration').textContent = `Starts at ${nextChangeTimeString} UTC • Rules for ${kingDuration.toFixed(5)} hours`;
+                // Update Next King
+                document.getElementById('next-king-index').innerHTML = `<span class="planet-symbol">${kings[nextKingIndex].symbol}</span> King ${nextKingIndex}`;
+                document.getElementById('next-king-name').textContent = `${kings[nextKingIndex].name} • ${kings[nextKingIndex].force}`;
+                
+                const nextChangeTimeString = formatUTCTime(nextChangeTime);
+                const kingDuration = 24 / 7;
+                document.getElementById('next-king-duration').textContent = `Starts at ${nextChangeTimeString} UTC • Rules for ${kingDuration.toFixed(5)} hours`;
 
-            // Update Time Zones
-            document.getElementById('time-utc').textContent = formatUTCTime(now);
-            document.getElementById('time-pdt').textContent = getTimeForOffset(now, -7);
-            document.getElementById('time-edt').textContent = getTimeForOffset(now, -4);
-            document.getElementById('time-china').textContent = getTimeForOffset(now, 8);
-            document.getElementById('time-jerusalem').textContent = getJerusalemTime(now);
+                // Update Time Zones
+                document.getElementById('time-utc').textContent = formatUTCTime(now);
+                document.getElementById('time-pdt').textContent = getTimeForOffset(now, -7);
+                document.getElementById('time-edt').textContent = getTimeForOffset(now, -4);
+                document.getElementById('time-china').textContent = getTimeForOffset(now, 8);
+                document.getElementById('time-jerusalem').textContent = getJerusalemTime(now);
 
-            // Update status timestamp
-            document.getElementById('update-time').textContent = now.toUTCString();
-            
-            // Hide any previous errors
-            hideError();
+                // Update status timestamp
+                document.getElementById('update-time').textContent = now.toUTCString();
+                
+                // Hide any previous errors
+                hideError();
+            } catch (error) {
+                showError(`Error updating widget: ${error.message}`);
+            }
         }
 
         // Initialization
