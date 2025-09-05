@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>168-System Heptarchic Cycle Tracker</title>
     <style>
-        /* === NEW: DARK THEME & TYPERWRITER FONT === */
+        /* === DARK THEME & TYPERWRITER FONT === */
         :root {
             --card-bg: #1a1a1a;
             --bg-primary: #121212;
@@ -26,7 +26,7 @@
         }
 
         .heptarchic-widget {
-            max-width: 450px; /* Slightly wider for new content */
+            max-width: 500px; /* Wider for additional timezone */
             margin: 0 auto;
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -43,7 +43,7 @@
         }
 
         .widget-title {
-            font-size: 1.4rem; /* Slightly larger */
+            font-size: 1.4rem;
             font-weight: 600;
             margin: 0 0 0.25rem 0;
             color: var(--text-primary);
@@ -96,11 +96,11 @@
         }
 
         .king-name {
-            font-size: 1.25rem; /* Larger for bigger planets */
+            font-size: 1.25rem;
             font-weight: 600;
             margin: 0.5rem 0;
         }
-        /* NEW: Make the planet symbol huge */
+        
         .planet-symbol {
             font-size: 2rem;
             margin-right: 0.5rem;
@@ -114,7 +114,7 @@
         }
 
         .countdown {
-            font-size: 1.8rem; /* Slightly larger countdown */
+            font-size: 1.8rem;
             font-weight: 700;
             text-align: center;
             margin: 1.5rem 0;
@@ -123,7 +123,7 @@
             letter-spacing: 2px;
         }
 
-        /* NEW: Timezone Styling */
+        /* Timezone Styling */
         .timezones {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -189,7 +189,7 @@
             <div id="next-king-duration" class="king-details">Starts at --:--:-- UTC</div>
         </div>
 
-        <!-- NEW: TIMEZONE DISPLAY -->
+        <!-- TIMEZONE DISPLAY - Added Jerusalem -->
         <div class="timezones">
             <div class="tz-card">
                 <span class="tz-label">PDT (UTC-7)</span>
@@ -198,6 +198,10 @@
             <div class="tz-card">
                 <span class="tz-label">EDT (UTC-4)</span>
                 <span class="tz-time" id="time-edt">--:--:--</span>
+            </div>
+            <div class="tz-card">
+                <span class="tz-label">JERUSALEM (UTC+2/+3)</span>
+                <span class="tz-time" id="time-jerusalem">--:--:--</span>
             </div>
             <div class="tz-card">
                 <span class="tz-label">CHINA (UTC+8)</span>
@@ -215,19 +219,19 @@
     </div>
 
 <script>
-        // King Data Mapping
+        // King Data Mapping with spirit names
         const kings = {
-            0: { name: "Saturn", symbol: "♄", force: "The Hermit", function: "Structure, Limitation, Foundation" },
-            1: { name: "Sun", symbol: "☉", force: "The Emperor", function: "Centrality, Vitality, Consciousness" },
-            2: { name: "Moon", symbol: "☾", force: "The High Priestess", function: "Intuition, Cycles, The Subconscious" },
-            3: { name: "Mars", symbol: "♂", force: "The Tower", function: "Action, Conflict, Energy, Will" },
-            4: { name: "Venus", symbol: "♀", force: "The Empress", function: "Love, Harmony, Beauty, Attraction" },
-            5: { name: "Mercury", symbol: "☿", force: "The Magician", function: "Intellect, Communication, Adaptation" },
-            6: { name: "Jupiter", symbol: "♃", force: "The Hierophant", function: "Expansion, Abundance, Wisdom" }
+            0: { name: "Baligon", symbol: "♄", force: "The Hermit", function: "Cosmic reset. Structural foundation, limitation." },
+            1: { name: "Bobogel", symbol: "☉", force: "The Emperor", function: "Centrality, vitality, consciousness, sovereign will." },
+            2: { name: "Blumaza", symbol: "☾", force: "The High Priestess", function: "Intuition, reflection, cycles, the subconscious." },
+            3: { name: "Bnaspol", symbol: "♂", force: "The Tower", function: "Dynamic action, raw energy, conflict, willpower." },
+            4: { name: "Babael", symbol: "☿", force: "The Magician", function: "Intellect, communication, adaptation, mediation." },
+            5: { name: "Bnapsen", symbol: "♃", force: "The Hierophant", function: "Expansion, abundance, wisdom, benevolent order." },
+            6: { name: "Brarges", symbol: "♀", force: "The Empress", function: "Love, harmony, beauty, attraction, creativity." }
         };
 
-        // --- NEW: ACCURATE TIME SYNCHRONIZATION LOGIC ---
-        let timeDrift = 0; // The difference between the real UTC time and the local clock (in milliseconds)
+        // --- ACCURATE TIME SYNCHRONIZATION LOGIC ---
+        let timeDrift = 0;
 
         // Function to fetch the real UTC time and calculate the drift
         async function syncTime() {
@@ -236,11 +240,11 @@
                 const data = await response.json();
                 const realUtc = new Date(data.utc_datetime);
                 const localTime = new Date();
-                timeDrift = realUtc - localTime; // Calculate the offset
+                timeDrift = realUtc - localTime;
                 console.log("Time synced successfully. Drift (ms):", timeDrift);
             } catch (error) {
                 console.error("Failed to sync time with world clock. Using local time.", error);
-                timeDrift = 0; // Fall back to local time if the fetch fails
+                timeDrift = 0;
             }
         }
 
@@ -256,16 +260,17 @@
             return Math.floor((utcHour * 7) / 24) % 7;
         }
 
-        // Find the next UTC hour when the King will change
-        function getNextChangeHour(currentUtcHour, currentKingIndex) {
-            let h = currentUtcHour;
-            let nextKingIndex = currentKingIndex;
-
-            while (nextKingIndex === currentKingIndex) {
-                h = (h + 1) % 24;
-                nextKingIndex = getKingIndex(h);
-            }
-            return h;
+        // Find the exact UTC time when the King will change
+        function getNextChangeTime(currentUtcTime, currentKingIndex) {
+            // Calculate the start of the current king's reign
+            const kingDuration = 24 / 7; // Approximately 3.42857 hours per king
+            const currentKingStartHour = Math.floor(currentUtcTime.getUTCHours() / kingDuration) * kingDuration;
+            
+            // Calculate the end of the current king's reign
+            const currentKingEndTime = new Date(currentUtcTime);
+            currentKingEndTime.setUTCHours(currentKingStartHour + kingDuration, 0, 0, 0);
+            
+            return currentKingEndTime;
         }
 
         // Format time remaining (seconds to HH:MM:SS)
@@ -276,7 +281,7 @@
             return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
         }
 
-        // NEW: Function to format a time for a timezone offset
+        // Function to format a time for a timezone offset
         function getTimeForOffset(utcDate, offsetHours) {
             const adjustedTime = new Date(utcDate.getTime() + (offsetHours * 60 * 60 * 1000));
             return adjustedTime.toLocaleTimeString('en-US', { 
@@ -287,63 +292,71 @@
             });
         }
 
+        // Get Jerusalem time (UTC+2 in winter, UTC+3 in summer)
+        function getJerusalemTime(utcDate) {
+            // Simple approximation - in reality, DST changes on specific dates
+            const month = utcDate.getUTCMonth();
+            // Assume DST: last Sunday in March to last Sunday in October
+            const isDST = month > 2 && month < 9 || 
+                         (month === 2 && utcDate.getUTCDate() > 24) || 
+                         (month === 9 && utcDate.getUTCDate() < 25);
+            
+            const offset = isDST ? 3 : 2;
+            return getTimeForOffset(utcDate, offset);
+        }
+
         // Update the entire widget display
         function updateWidget() {
-            const now = getSyncedTime(); // CHANGED: Use the synced time
+            const now = getSyncedTime();
             const currentUtcHour = now.getUTCHours();
             const currentKingIndex = getKingIndex(currentUtcHour);
 
-            // Update Current King - WITH BIG SYMBOL
+            // Update Current King
             document.getElementById('current-king-index').innerHTML = `<span class="planet-symbol">${kings[currentKingIndex].symbol}</span> King ${currentKingIndex}`;
             document.getElementById('current-king-name').textContent = `${kings[currentKingIndex].name} • ${kings[currentKingIndex].force}`;
             document.getElementById('current-king-function').textContent = kings[currentKingIndex].function;
 
-            // Calculate next change and Next King
-            const nextChangeHourUtc = getNextChangeHour(currentUtcHour, currentKingIndex);
-            const nextKingIndex = getKingIndex(nextChangeHourUtc);
+            // Calculate next change time and Next King
+            const nextChangeTime = getNextChangeTime(now, currentKingIndex);
+            const nextKingIndex = (currentKingIndex + 1) % 7;
 
             // Calculate seconds until next change
-            const currentUtcMinutes = now.getUTCMinutes();
-            const currentUtcSeconds = now.getUTCSeconds();
-            let secondsRemaining = ((nextChangeHourUtc - currentUtcHour - 1) * 3600) + ((60 - currentUtcMinutes - 1) * 60) + (60 - currentUtcSeconds);
-            if (secondsRemaining < 0) secondsRemaining += 24 * 3600;
+            const secondsRemaining = Math.floor((nextChangeTime - now) / 1000);
 
             // Update Countdown
             document.getElementById('countdown').textContent = formatTimeRemaining(secondsRemaining);
 
-            // Update Next King - WITH BIG SYMBOL
+            // Update Next King
             document.getElementById('next-king-index').innerHTML = `<span class="planet-symbol">${kings[nextKingIndex].symbol}</span> King ${nextKingIndex}`;
             document.getElementById('next-king-name').textContent = `${kings[nextKingIndex].name} • ${kings[nextKingIndex].force}`;
-            const nextChangeTimeString = `${nextChangeHourUtc.toString().padStart(2, '0')}:00:00 UTC`;
-            const nextKingEndHour = getNextChangeHour(nextChangeHourUtc, nextKingIndex);
-            let durationHours = nextKingEndHour - nextChangeHourUtc;
-            if (durationHours < 0) durationHours += 24;
-            document.getElementById('next-king-duration').textContent = `Starts at ${nextChangeTimeString} • Rules for ${durationHours} hour${durationHours !== 1 ? 's' : ''}`;
+            
+            const nextChangeTimeString = nextChangeTime.toUTCString().split(' ')[4];
+            const kingDuration = 24 / 7;
+            document.getElementById('next-king-duration').textContent = `Starts at ${nextChangeTimeString} UTC • Rules for ${kingDuration.toFixed(5)} hours`;
 
-            // NEW: Update Time Zones
+            // Update Time Zones
             document.getElementById('time-utc').textContent = now.toUTCString().split(' ')[4];
             document.getElementById('time-pdt').textContent = getTimeForOffset(now, -7);
             document.getElementById('time-edt').textContent = getTimeForOffset(now, -4);
             document.getElementById('time-china').textContent = getTimeForOffset(now, 8);
+            document.getElementById('time-jerusalem').textContent = getJerusalemTime(now);
 
             // Update status timestamp
             document.getElementById('update-time').textContent = now.toUTCString();
         }
 
-        // --- NEW: INITIALIZATION WITH TIME SYNC ---
+        // Initialization with time sync
         async function initWidget() {
-            // Show a loading state
             document.getElementById('current-king-index').textContent = "Syncing Time...";
             document.getElementById('countdown').textContent = "--:--:--";
             
-            await syncTime(); // Wait for the time to sync
-            updateWidget(); // Do the first update
-            setInterval(updateWidget, 1000); // Then update every second
+            await syncTime();
+            updateWidget();
+            setInterval(updateWidget, 1000);
         }
 
         // Start the widget
         initWidget();
     </script>
-
 </body>
 </html>
