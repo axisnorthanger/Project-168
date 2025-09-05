@@ -11,8 +11,8 @@
             --bg-primary: #121212;
             --text-primary: #e0e0e0;
             --text-secondary: #a0a0a0;
-            --accent-king: #da8c45; /* Warmer, metallic Mercury */
-            --accent-next: #4ecdc4; /* Softer, jewel-toned Jupiter */
+            --accent-king: #da8c45;
+            --accent-next: #4ecdc4;
             --border-color: #333333;
         }
 
@@ -26,7 +26,7 @@
         }
 
         .heptarchic-widget {
-            max-width: 500px; /* Wider for additional timezone */
+            max-width: 500px;
             margin: 0 auto;
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -123,7 +123,6 @@
             letter-spacing: 2px;
         }
 
-        /* Timezone Styling */
         .timezones {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -158,6 +157,13 @@
             padding-top: 0.75rem;
             border-top: 1px solid var(--border-color);
         }
+        
+        .error-message {
+            color: #ff6b6b;
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -166,6 +172,8 @@
             <div class="widget-title">Heptarchic Cycle</div>
             <div class="widget-subtitle">168-System King Tracker</div>
         </div>
+
+        <div id="error-message" class="error-message" style="display: none;"></div>
 
         <div class="king-card current">
             <div>
@@ -189,7 +197,7 @@
             <div id="next-king-duration" class="king-details">Starts at --:--:-- UTC</div>
         </div>
 
-        <!-- TIMEZONE DISPLAY - Added Jerusalem -->
+        <!-- TIMEZONE DISPLAY -->
         <div class="timezones">
             <div class="tz-card">
                 <span class="tz-label">PDT (UTC-7)</span>
@@ -230,31 +238,6 @@
             6: { name: "Brarges", symbol: "♀", force: "The Empress", function: "Love, harmony, beauty, attraction, creativity." }
         };
 
-        // --- ACCURATE TIME SYNCHRONIZATION LOGIC ---
-        let timeDrift = 0;
-
-        // Function to fetch the real UTC time and calculate the drift
-        async function syncTime() {
-            try {
-                const response = await fetch('https://worldtimeapi.org/api/ip');
-                const data = await response.json();
-                const realUtc = new Date(data.utc_datetime);
-                const localTime = new Date();
-                timeDrift = realUtc - localTime;
-                console.log("Time synced successfully. Drift (ms):", timeDrift);
-            } catch (error) {
-                console.error("Failed to sync time with world clock. Using local time.", error);
-                timeDrift = 0;
-            }
-        }
-
-        // Function to get the accurate, synced time
-        function getSyncedTime() {
-            const localTime = new Date();
-            return new Date(localTime.getTime() + timeDrift);
-        }
-        // --- END TIME SYNC LOGIC ---
-
         // Core Function to Calculate the Current King from UTC Hour
         function getKingIndex(utcHour) {
             return Math.floor((utcHour * 7) / 24) % 7;
@@ -292,22 +275,51 @@
             });
         }
 
-        // Get Jerusalem time (UTC+2 in winter, UTC+3 in summer)
+        // Get Jerusalem time (UTC+2 in winter, UTC+3 in summer - IDT)
         function getJerusalemTime(utcDate) {
-            // Simple approximation - in reality, DST changes on specific dates
+            // Israel observes DST from the last Friday before April 2 to the last Sunday in October
+            const year = utcDate.getUTCFullYear();
             const month = utcDate.getUTCMonth();
-            // Assume DST: last Sunday in March to last Sunday in October
-            const isDST = month > 2 && month < 9 || 
-                         (month === 2 && utcDate.getUTCDate() > 24) || 
-                         (month === 9 && utcDate.getUTCDate() < 25);
-            
+            const date = utcDate.getUTCDate();
+    
+            // Calculate DST start (last Friday before April 2)
+            const dstStart = new Date(Date.UTC(year, 2, 31)); // March 31
+            dstStart.setUTCDate(31 - (dstStart.getUTCDay() + 2) % 7);
+    
+            // Calculate DST end (last Sunday in October)
+            const dstEnd = new Date(Date.UTC(year, 9, 31)); // October 31
+            dstEnd.setUTCDate(31 - dstEnd.getUTCDay());
+    
+            const now = new Date(Date.UTC(year, month, date));
+            const isDST = now >= dstStart && now <= dstEnd;
+    
             const offset = isDST ? 3 : 2;
             return getTimeForOffset(utcDate, offset);
         }
 
+        // Format UTC time properly
+        function formatUTCTime(date) {
+            const hours = date.getUTCHours().toString().padStart(2, '0');
+            const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+            const seconds = date.getUTCSeconds().toString().padStart(2, '0');
+            return `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorElement = document.getElementById('error-message');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        // Hide error message
+        function hideError() {
+            document.getElementById('error-message').style.display = 'none';
+        }
+
         // Update the entire widget display
         function updateWidget() {
-            const now = getSyncedTime();
+            const now = new Date();
             const currentUtcHour = now.getUTCHours();
             const currentKingIndex = getKingIndex(currentUtcHour);
 
@@ -330,12 +342,12 @@
             document.getElementById('next-king-index').innerHTML = `<span class="planet-symbol">${kings[nextKingIndex].symbol}</span> King ${nextKingIndex}`;
             document.getElementById('next-king-name').textContent = `${kings[nextKingIndex].name} • ${kings[nextKingIndex].force}`;
             
-            const nextChangeTimeString = nextChangeTime.toUTCString().split(' ')[4];
+            const nextChangeTimeString = formatUTCTime(nextChangeTime);
             const kingDuration = 24 / 7;
             document.getElementById('next-king-duration').textContent = `Starts at ${nextChangeTimeString} UTC • Rules for ${kingDuration.toFixed(5)} hours`;
 
             // Update Time Zones
-            document.getElementById('time-utc').textContent = now.toUTCString().split(' ')[4];
+            document.getElementById('time-utc').textContent = formatUTCTime(now);
             document.getElementById('time-pdt').textContent = getTimeForOffset(now, -7);
             document.getElementById('time-edt').textContent = getTimeForOffset(now, -4);
             document.getElementById('time-china').textContent = getTimeForOffset(now, 8);
@@ -343,16 +355,19 @@
 
             // Update status timestamp
             document.getElementById('update-time').textContent = now.toUTCString();
+            
+            // Hide any previous errors
+            hideError();
         }
 
-        // Initialization with time sync
-        async function initWidget() {
-            document.getElementById('current-king-index').textContent = "Syncing Time...";
-            document.getElementById('countdown').textContent = "--:--:--";
-            
-            await syncTime();
-            updateWidget();
-            setInterval(updateWidget, 1000);
+        // Initialization
+        function initWidget() {
+            try {
+                updateWidget();
+                setInterval(updateWidget, 1000);
+            } catch (error) {
+                showError(`Error initializing widget: ${error.message}`);
+            }
         }
 
         // Start the widget
