@@ -123,6 +123,14 @@
             letter-spacing: 2px;
         }
 
+        .countdown-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+
         .timezones {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -187,6 +195,7 @@
         <div class="countdown" id="countdown">
             --:--:--
         </div>
+        <div class="countdown-label" id="countdown-label">Remaining: --:--:--</div>
 
         <div class="king-card next">
             <div>
@@ -282,21 +291,15 @@
 
         // Get Jerusalem time (UTC+2 in winter, UTC+3 in summer - IDT)
         function getJerusalemTime(utcDate) {
-            // Israel observes DST from the last Friday before April 2 to the last Sunday in October
-            const year = utcDate.getUTCFullYear();
+            // Simple approximation for Jerusalem time (UTC+2 standard, UTC+3 DST)
+            // Israel DST typically runs from late March to late October
             const month = utcDate.getUTCMonth();
-            const date = utcDate.getUTCDate();
+            const day = utcDate.getUTCDate();
             
-            // Calculate DST start (last Friday before April 2)
-            const dstStart = new Date(Date.UTC(year, 2, 31)); // March 31
-            dstStart.setUTCDate(31 - (dstStart.getUTCDay() + 2) % 7);
-            
-            // Calculate DST end (last Sunday in October)
-            const dstEnd = new Date(Date.UTC(year, 9, 31)); // October 31
-            dstEnd.setUTCDate(31 - dstEnd.getUTDay());
-            
-            const now = new Date(Date.UTC(year, month, date));
-            const isDST = now >= dstStart && now <= dstEnd;
+            // Approximate DST period: last Sunday in March to last Sunday in October
+            const isDST = (month > 2 && month < 9) || 
+                         (month === 2 && day > 24) || 
+                         (month === 9 && day < 25);
             
             const offset = isDST ? 3 : 2;
             return getTimeForOffset(utcDate, offset);
@@ -310,11 +313,17 @@
             return `${hours}:${minutes}:${seconds}`;
         }
 
+        // Format a full date time string
+        function formatDateTime(date) {
+            return date.toUTCString().replace('GMT', 'UTC');
+        }
+
         // Show error message
         function showError(message) {
             const errorElement = document.getElementById('error-message');
             errorElement.textContent = message;
             errorElement.style.display = 'block';
+            console.error(message);
         }
 
         // Hide error message
@@ -342,7 +351,9 @@
                 const secondsRemaining = Math.floor((nextChangeTime - now) / 1000);
 
                 // Update Countdown
-                document.getElementById('countdown').textContent = formatTimeRemaining(secondsRemaining);
+                const countdownText = formatTimeRemaining(secondsRemaining);
+                document.getElementById('countdown').textContent = countdownText;
+                document.getElementById('countdown-label').textContent = `Remaining: ${countdownText}`;
 
                 // Update Next King
                 document.getElementById('next-king-index').innerHTML = `<span class="planet-symbol">${kings[nextKingIndex].symbol}</span> King ${nextKingIndex}`;
@@ -360,7 +371,7 @@
                 document.getElementById('time-jerusalem').textContent = getJerusalemTime(now);
 
                 // Update status timestamp
-                document.getElementById('update-time').textContent = now.toUTCString();
+                document.getElementById('update-time').textContent = formatDateTime(now);
                 
                 // Hide any previous errors
                 hideError();
