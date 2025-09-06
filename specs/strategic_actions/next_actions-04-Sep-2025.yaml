@@ -1,0 +1,49 @@
+# next_actions-04-Sep-2025.yaml
+# Generated: 2025-09-04T17:00:00-07:00
+# Context: Successful live-test (The Chris Protocol). Preparation for deep dive into p.370 anomaly.
+# Reference Chat: https://chat.deepseek.com/a/chat/s/95ef0d27-ace4-40ac-b6b8-d9bc0499e4b8
+
+strategic_focus:
+  primary_goal: "Investigate the p.370 anomaly and integrate findings into the data model."
+  guiding_principle: "The feeling of 'something weird' is a data point. Anomalies are doors."
+
+completed_actions:
+  - id: "LIVE-TEST-01"
+    description: "Executed first intentional operation (The Chris Protocol) using King 5 (Jupiter) numerology."
+    outcome: "Total success on emotional/magical level. Proof-of-concept achieved."
+    files:
+      - "/user_feedback/chris_feedback.yaml"
+
+next_actions:
+  - id: "DATA-ANOMALY-01"
+    description: "Create a dedicated investigation file for the p.370 anomaly."
+    owner: "User"
+    notes: "The 'weirdness' is likely one of: a cipher, a misdirection, a key to a different schema, or a direct communication. Approach with curiosity, not assumption."
+    related_files:
+      - "/investigations/p370_anomaly.yaml" # <-- We will create this
+      - "/data/raw/lemegeton/rudd_appendix2-72-goetia-table-p370.jpeg" # <-- The source file
+
+  - id: "TRACKER-FIX-01"
+    description: "Fix the King label off-by-one error in the live Tracker frontend."
+    owner: "User"
+    priority: "High"
+    notes: "Tracker logic is calculating king_index correctly but displaying king_index+1. Sync with `heptarchic_cycle.yaml`."
+    related_files:
+      - "/specs/heptarchic_cycle.yaml"
+      - "/scripts/temporal_engine.py" # or wherever the frontend gets its labels
+
+  - id: "DOCUMENT-01"
+    description: "Formalize 'The Chris Protocol' for intentional number selection."
+    owner: "User"
+    notes: "Create a user-friendly guide based on the numerology YAML and the successful method used today."
+    related_files:
+      - "/specs/heptarchic_numerology.yaml"
+      - "/docs/protocols/chris_protocol.md"
+
+next_meta_review:
+  scheduled: "After creation of p370_anomaly.yaml and initial investigation"
+  agenda: "Review findings from p.370 and plan its integration into the core model."
+
+# Legacy of this session:
+# The project is no longer solitary. It is a collaborative, living system.
+# The Tracker is no longer a display; it is an instrument for intentionality.
