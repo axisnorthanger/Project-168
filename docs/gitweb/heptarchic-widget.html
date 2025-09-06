@@ -113,22 +113,30 @@
             margin: 0.25rem 0;
         }
 
-        .countdown {
-            font-size: 1.8rem;
-            font-weight: 700;
+        .countdown-container {
             text-align: center;
             margin: 1.5rem 0;
-            font-variant-numeric: tabular-nums;
-            color: var(--accent-king);
-            letter-spacing: 2px;
         }
 
         .countdown-label {
-            text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            margin-top: -1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            color: var(--accent-king);
+            letter-spacing: 2px;
+            margin: 0.5rem 0;
+        }
+
+        .time-format {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
         }
 
         .timezones {
@@ -192,10 +200,11 @@
             <div id="current-king-function" class="king-details">...</div>
         </div>
 
-        <div class="countdown" id="countdown">
-            --:--:--
+        <div class="countdown-container">
+            <div class="countdown-label">Time Remaining</div>
+            <div class="countdown" id="countdown">--:--:--</div>
+            <div class="time-format">hh:mm:ss</div>
         </div>
-        <div class="countdown-label" id="countdown-label">Remaining: --:--:--</div>
 
         <div class="king-card next">
             <div>
@@ -353,7 +362,6 @@
                 // Update Countdown
                 const countdownText = formatTimeRemaining(secondsRemaining);
                 document.getElementById('countdown').textContent = countdownText;
-                document.getElementById('countdown-label').textContent = `Remaining: ${countdownText}`;
 
                 // Update Next King
                 document.getElementById('next-king-index').innerHTML = `<span class="planet-symbol">${kings[nextKingIndex].symbol}</span> King ${nextKingIndex}`;
