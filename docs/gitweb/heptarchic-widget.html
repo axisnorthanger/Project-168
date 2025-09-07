@@ -261,16 +261,27 @@
         }
 
         // Find the exact UTC time when the King will change
-        function getNextChangeTime(currentUtcTime, currentKingIndex) {
-            // Calculate the start of the current king's reign
-            const kingDuration = 24 / 7; // Approximately 3.42857 hours per king
-            const currentKingStartHour = Math.floor(currentUtcTime.getUTCHours() / kingDuration) * kingDuration;
-            
-            // Calculate the end of the current king's reign
-            const currentKingEndTime = new Date(currentUtcTime);
-            currentKingEndTime.setUTCHours(currentKingStartHour + kingDuration, 0, 0, 0);
-            
-            return currentKingEndTime;
+        function getNextChangeTime(currentUtcTime) {
+            const kingDuration = 24 / 7; // ~3.42857142857 hours per king
+            const totalHours = currentUtcTime.getUTCHours() + 
+                               currentUtcTime.getUTCMinutes() / 60 + 
+                               currentUtcTime.getUTCSeconds() / 3600;
+    
+        // Find the start time of the *current* king's reign
+        const currentKingStartHour = Math.floor(totalHours / kingDuration) * kingDuration;
+
+        // The end time is simply the start time plus the duration
+         const nextChangeHour = currentKingStartHour + kingDuration;
+
+        // Convert the fractional hour back to an absolute time for today
+        const nextChangeTime = new Date(currentUtcTime);
+        nextChangeTime.setUTCHours(Math.floor(nextChangeHour), 0, 0, 0); // Set the hour part
+        const minutesFraction = (nextChangeHour - Math.floor(nextChangeHour)) * 60;
+        nextChangeTime.setUTCMinutes(Math.floor(minutesFraction), 0, 0); // Set the minutes part
+        const secondsFraction = (minutesFraction - Math.floor(minutesFraction)) * 60;
+        nextChangeTime.setUTCSeconds(Math.floor(secondsFraction), 0); // Set the seconds part
+
+        return nextChangeTime;
         }
 
         // Format time remaining (seconds to HH:MM:SS)
@@ -319,7 +330,7 @@
             document.getElementById('current-king-function').textContent = kings[currentKingIndex].function;
 
             // Calculate next change time and Next King
-            const nextChangeTime = getNextChangeTime(now, currentKingIndex);
+            const nextChangeTime = getNextChangeTime(now);
             const nextKingIndex = (currentKingIndex + 1) % 7;
 
             // Calculate seconds until next change
