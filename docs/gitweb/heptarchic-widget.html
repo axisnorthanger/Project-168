@@ -306,6 +306,7 @@
         }
 
         // Update the entire widget display
+        // Update the entire widget display
         function updateWidget() {
             const now = getSyncedTime();
             const currentUtcHour = now.getUTCHours();
@@ -336,9 +337,6 @@
             const kingDuration = 24 / 7;
             document.getElementById('next-king-duration').textContent = `Starts at ${nextChangeTimeString} UTC • Rules for ${kingDuration.toFixed(5)} hours`;
 
-            // ... (timezone update code remains the same) ...
-        }
-        
             // Update Time Zones
             document.getElementById('time-utc').textContent = now.toUTCString().split(' ')[4];
             document.getElementById('time-pdt').textContent = getTimeForOffset(now, -7);
@@ -348,8 +346,8 @@
 
             // Update status timestamp
             document.getElementById('update-time').textContent = now.toUTCString();
-        }
-
+        } // <-- This is the correct closing brace for the updateWidget function
+        
         // Initialization with time sync
         async function initWidget() {
             document.getElementById('current-king-index').textContent = "Syncing Time...";
