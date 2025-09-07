@@ -218,6 +218,7 @@
         </div>
     </div>
 
+
 <script>
         // King Data Mapping with spirit names
         const kings = {
@@ -230,31 +231,7 @@
             6: { name: "Brarges", symbol: "♀", force: "The Empress", function: "Love, harmony, beauty, attraction, creativity." }
         };
 
-        // --- ACCURATE TIME SYNCHRONIZATION LOGIC ---
-        let timeDrift = 0;
-
-        // Function to fetch the real UTC time and calculate the drift
-        async function syncTime() {
-            try {
-                const response = await fetch('https://worldtimeapi.org/api/ip');
-                const data = await response.json();
-                const realUtc = new Date(data.utc_datetime);
-                const localTime = new Date();
-                timeDrift = realUtc - localTime;
-                console.log("Time synced successfully. Drift (ms):", timeDrift);
-            } catch (error) {
-                console.error("Failed to sync time with world clock. Using local time.", error);
-                timeDrift = 0;
-            }
-        }
-
-        // Function to get the accurate, synced time
-        function getSyncedTime() {
-            const localTime = new Date();
-            return new Date(localTime.getTime() + timeDrift);
-        }
-        // --- END TIME SYNC LOGIC ---
-
+        // --- ROBUST TIME LOGIC (Using Browser UTC) ---
         // Core Function to Calculate the Current King from UTC Hour
         function getKingIndex(utcHour) {
             return Math.floor((utcHour * 7) / 24) % 7;
@@ -266,22 +243,21 @@
             const totalHours = currentUtcTime.getUTCHours() + 
                                currentUtcTime.getUTCMinutes() / 60 + 
                                currentUtcTime.getUTCSeconds() / 3600;
-    
-        // Find the start time of the *current* king's reign
-        const currentKingStartHour = Math.floor(totalHours / kingDuration) * kingDuration;
+            
+            // Find the start time of the *current* king's reign
+            const currentKingStartHour = Math.floor(totalHours / kingDuration) * kingDuration;
+            // The end time is simply the start time plus the duration
+            const nextChangeHour = currentKingStartHour + kingDuration;
 
-        // The end time is simply the start time plus the duration
-         const nextChangeHour = currentKingStartHour + kingDuration;
+            // Convert the fractional hour back to an absolute time for today
+            const nextChangeTime = new Date(currentUtcTime);
+            nextChangeTime.setUTCHours(Math.floor(nextChangeHour), 0, 0, 0);
+            const minutesFraction = (nextChangeHour - Math.floor(nextChangeHour)) * 60;
+            nextChangeTime.setUTCMinutes(Math.floor(minutesFraction), 0, 0);
+            const secondsFraction = (minutesFraction - Math.floor(minutesFraction)) * 60;
+            nextChangeTime.setUTCSeconds(Math.floor(secondsFraction), 0);
 
-        // Convert the fractional hour back to an absolute time for today
-        const nextChangeTime = new Date(currentUtcTime);
-        nextChangeTime.setUTCHours(Math.floor(nextChangeHour), 0, 0, 0); // Set the hour part
-        const minutesFraction = (nextChangeHour - Math.floor(nextChangeHour)) * 60;
-        nextChangeTime.setUTCMinutes(Math.floor(minutesFraction), 0, 0); // Set the minutes part
-        const secondsFraction = (minutesFraction - Math.floor(minutesFraction)) * 60;
-        nextChangeTime.setUTCSeconds(Math.floor(secondsFraction), 0); // Set the seconds part
-
-        return nextChangeTime;
+            return nextChangeTime;
         }
 
         // Format time remaining (seconds to HH:MM:SS)
@@ -317,13 +293,11 @@
         }
 
         // Update the entire widget display
-        // Update the entire widget display
         function updateWidget() {
-            const now = getSyncedTime();
+            const now = new Date(); // Use the browser's accurate UTC time
             const currentUtcHour = now.getUTCHours();
             const currentKingIndex = getKingIndex(currentUtcHour);
 
-            // --- CORRECTED LINES BELOW (Removed the +1) ---
             // Update Current King
             document.getElementById('current-king-index').innerHTML = `<span class="planet-symbol">${kings[currentKingIndex].symbol}</span> King ${currentKingIndex}`;
             document.getElementById('current-king-name').textContent = `${kings[currentKingIndex].name} • ${kings[currentKingIndex].force}`;
@@ -335,14 +309,12 @@
 
             // Calculate seconds until next change
             const secondsRemaining = Math.floor((nextChangeTime - now) / 1000);
-
             // Update Countdown
             document.getElementById('countdown').textContent = formatTimeRemaining(secondsRemaining);
 
             // Update Next King
             document.getElementById('next-king-index').innerHTML = `<span class="planet-symbol">${kings[nextKingIndex].symbol}</span> King ${nextKingIndex}`;
             document.getElementById('next-king-name').textContent = `${kings[nextKingIndex].name} • ${kings[nextKingIndex].force}`;
-            // --- END OF CORRECTED LINES ---
             
             const nextChangeTimeString = nextChangeTime.toUTCString().split(' ')[4];
             const kingDuration = 24 / 7;
@@ -357,20 +329,16 @@
 
             // Update status timestamp
             document.getElementById('update-time').textContent = now.toUTCString();
-        } // <-- This is the correct closing brace for the updateWidget function
-        
-        // Initialization with time sync
-        async function initWidget() {
-            document.getElementById('current-king-index').textContent = "Syncing Time...";
-            document.getElementById('countdown').textContent = "--:--:--";
-            
-            await syncTime();
+        }
+
+        // Initialization
+        function initWidget() {
             updateWidget();
-            setInterval(updateWidget, 1000);
+            setInterval(updateWidget, 1000); // Update every second
         }
 
         // Start the widget
         initWidget();
-    </script>
+</script>
 </body>
 </html>
