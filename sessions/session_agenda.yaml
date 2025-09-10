@@ -1,0 +1,22 @@
+%YAML 1.2
+---
+# Per-Session Agenda — Timeboxed schedule with pre-reads and decision gates
+version: "1.0"
+document_header:
+  session_id: "session-2025-09-12"
+  chair: "Commissioner"
+agenda_items:
+  - slot: "00:00–00:10"
+    item_id: "roll-call-and-minutes"
+    objective: "Approve prior minutes; confirm agenda."
+  - slot: "00:10–00:35"
+    item_id: "P168-verify-664-496-168"
+    objective: "Vote to admit to docket; authorize corpus verification for H1–H4."
+    pre_reads: ["Project-168-Committee.yaml"]
+    decision_gate: "Admit to docket? Authorize corpus access? Assign reviewers?"
+  - slot: "00:35–00:55"
+    item_id: "protocol-refresh"
+    objective: "Ratify resubmission window and artifact checklist updates."
+  - slot: "00:55–01:00"
+    item_id: "AOB-and-adjourn"
+    objective: "Capture action items and close."
