@@ -1,22 +1,22 @@
 %YAML 1.2
 ---
-# Per-Session Agenda — Timeboxed schedule with pre-reads and decision gates
+# Resubmission Protocol — Standing governance for resubmissions and objections
 version: "1.0"
 document_header:
-  session_id: "session-2025-09-12"
-  chair: "Commissioner"
-agenda_items:
-  - slot: "00:00–00:10"
-    item_id: "roll-call-and-minutes"
-    objective: "Approve prior minutes; confirm agenda."
-  - slot: "00:10–00:35"
-    item_id: "P168-verify-664-496-168"
-    objective: "Vote to admit to docket; authorize corpus verification for H1–H4."
-    pre_reads: ["Project-168-Committee.yaml"]
-    decision_gate: "Admit to docket? Authorize corpus access? Assign reviewers?"
-  - slot: "00:35–00:55"
-    item_id: "protocol-refresh"
-    objective: "Ratify resubmission window and artifact checklist updates."
-  - slot: "00:55–01:00"
-    item_id: "AOB-and-adjourn"
-    objective: "Capture action items and close."
+  id: "protocol-resubmissions"
+  scope: "Committee-wide governance for initial report resubmissions and discussions."
+windows:
+  resubmission_window:
+    duration: "72h from receipt of last member report"
+    notice: "Announce start/end; silence implies assent unless a reasoned objection is filed."
+consensus:
+  public_track: "Default forum for proposals, objections, and edits; Chair establishes rough consensus from arguments, not vote counts."
+  private_track: "Optional sessions under the Chatham House Rule to surface sensitive concerns; information may be used but attribution is withheld."
+  escalation: "If unresolved, escalate to a time-boxed formal vote per decision-making rules."
+submissions:
+  format: "Use PR-style resubmission with changelog, redline, and artifact links; include acceptance criteria mapping."
+  artifact_requirements: "Provide materials sufficient for independent verification and reproduction of results where applicable."
+objections_and_veto:
+  requirement: "Substantive objections must include rationale and a remediation path; vetoes pause adoption pending resolution."
+records:
+  archival: "Publish decisions and minutes to the public archive; summarize private-track outcomes without attribution."
