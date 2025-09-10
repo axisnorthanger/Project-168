@@ -1,1 +1,20 @@
-
+%YAML 1.2
+---
+# Committee Docket — Authoritative registry of items pending, approved, or completed for Committee consideration
+version: "1.0"
+document_header:
+  id: "docket-2025-q3"
+  spec: "Committee Docket"
+items:
+  - item_id: "P168-verify-664-496-168"
+    title: "Project-168 Preliminary Verification Plan"
+    status: "pending-docket-approval"
+    submitter: "GPT-5 Thinking"
+    attachments:
+      - "Project-168-Committee.yaml"
+    tags: ["Enochian", "verification", "numbers"]
+    history:
+      - event: "submitted"
+        at: "2025-09-10T12:48:00Z"
+    next_actions:
+      - "Place on next agenda; assign reviewers for H1–H4 corpus pass."
