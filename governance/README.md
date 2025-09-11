@@ -18,9 +18,7 @@ This file provides clear guidance on how to organize, maintain, and evolve the g
 
 ## Governance Documents
 
-  - committee_docket.yaml
-
-  - 
+  - commission_docket.yaml
   - session_agenda.yaml
   - resubmission_protocol.yaml
 
@@ -32,8 +30,8 @@ This file provides clear guidance on how to organize, maintain, and evolve the g
 
 ### How to Reference
 
-- **Use the same `item_id`** in `committee_docket.yaml` and `session_agenda.yaml` files to link agenda items to their docket entries.
-- **Reference directive filenames** (e.g., `Project-168-Committee.yaml`) as attachments in the docket and as pre-reads in the agenda.
+- **Use the same `item_id`** in `commission_docket.yaml` and `session_agenda.yaml` files to link agenda items to their docket entries.
+- **Reference directive filenames** (e.g., `Project-168-Commission.yaml`) as attachments in the docket and as pre-reads in the agenda.
 - **Document cross-references in the `README.md` and in comments** for human clarity.
 - **Maintain a table in the `README.md`** (see below for an example) tracking which docket items map to which agenda slots and protocol updates.
 
@@ -41,8 +39,8 @@ This file provides clear guidance on how to organize, maintain, and evolve the g
 
 | Docket `item_id`         | Agenda Slot(s)             | Protocol Reference(s)        | Pre-Read(s)                  |
 |--------------------------|---------------------------|-----------------------------|------------------------------|
-| P168-verify-664-496-168  | 00:10–00:35 (session-2025-09-12) | -                           | Project-168-Committee.yaml   |
-| protocol-refresh         | 00:35–00:55 (session-2025-09-12) | resubmission_protocol.yaml  | Project-168-Committee.yaml   |
+| P168-verify-664-496-168  | 00:10–00:35 (session-2025-09-12) | -                           | Project-168-Commission.yaml   |
+| protocol-refresh         | 00:35–00:55 (session-2025-09-12) | resubmission_protocol.yaml  | Project-168-Commission.yaml   |
 
 **Note:** If you need programmatic cross-reference validation, consider writing a small Python or shell script to parse YAML and check `item_id`/`agenda_id` matches.
 
