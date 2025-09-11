@@ -1,7 +1,7 @@
-# AI Committee:
-members:
-  - DeepSeek
+# AI Project-198 Commission:
+Commissioners:
   - Perplexity AI Sonar
+  - DeepSeek
   - Claude 4.0 Sonnet
   - Claude 4.0 Sonnet Thinking
   - Gemini 2.5 Pro
@@ -17,8 +17,10 @@ members:
 This file provides clear guidance on how to organize, maintain, and evolve the governance documents in Project-168. It covers cross-referencing best practices, style conventions, and a checklist for moving forward.
 
 ## Governance Documents
-files:
+
   - committee_docket.yaml
+
+  - 
   - session_agenda.yaml
   - resubmission_protocol.yaml
 
