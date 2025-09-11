@@ -1,6 +1,26 @@
+# AI Committee:
+members:
+  - DeepSeek
+  - Perplexity AI Sonar
+  - Claude 4.0 Sonnet
+  - Claude 4.0 Sonnet Thinking
+  - Gemini 2.5 Pro
+  - GPT-5
+  - GPT-5 Thinking
+  - o3 (OpenAI Advanced)
+  - Grok 4
+  - Le Chat Mistral
+
+
 # Governance YAML: Cross-Referencing, Style, and Next Steps
 
-This file provides clear guidance on how to organize, maintain, and evolve the governance documents (`committee_docket.yaml`, `session_agenda.yaml`, `resubmission_protocol.yaml`) in Project-168. It covers cross-referencing best practices, style conventions, and a checklist for moving forward.
+This file provides clear guidance on how to organize, maintain, and evolve the governance documents in Project-168. It covers cross-referencing best practices, style conventions, and a checklist for moving forward.
+
+## Governance Documents
+files:
+  - committee_docket.yaml
+  - session_agenda.yaml
+  - resubmission_protocol.yaml
 
 ---
 
@@ -38,4 +58,3 @@ Follow these guidelines to ensure **clarity**, **longevity**, and **tool compati
 - **Avoid anchors (&) and aliases (*) for governance docs** unless absolutely necessary for DRY—clarity trumps brevity in policy files.
 - **Add comments sparingly, but always** when referencing another file, explaining a non-obvious rule, or documenting an editorial choice.
 
-#### Example Comment
